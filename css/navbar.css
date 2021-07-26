@@ -1,0 +1,26 @@
+.navbar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.navbar-link {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    background-color: rgba(255, 255, 255, 0.425);
+}
+
+.navbar-header a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}

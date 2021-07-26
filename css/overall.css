@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    background-color: rgb(255, 251, 228);
+}
+
+.main {
+    margin-top: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: rgba(128, 128, 128, 0.356);
+    height: 700px;
+}
