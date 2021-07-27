@@ -1,12 +1,33 @@
 body {
     margin: 0;
-    background-color: rgb(255, 251, 228);
+    background-color: #2b7cbb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 30px;
 }
 
 .main {
-    margin-top: 10px;
-    border: 1px solid grey;
-    border-radius: 5px;
-    background-color: rgba(128, 128, 128, 0.356);
-    height: 700px;
+    width: 70%;
+    border-radius: 10px;
+    background-color: #efefef;
+    min-height: 700px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-content {
+    width: 100%;
+    min-height: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.781);
+    border-radius: 3px;
+    margin: 40px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
 }

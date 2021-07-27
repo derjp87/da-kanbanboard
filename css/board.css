@@ -1,0 +1,30 @@
+.board-main {
+    width: 100%;
+    margin: 10px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid rgba(128, 128, 128, 0.349);
+}
+
+.board-category {
+    width: 33%;
+    min-height: 100%;
+    border-top: 1px solid rgba(128, 128, 128, 0.349);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.349);
+    border-left: 1px solid rgba(128, 128, 128, 0.349);
+}
+
+.board-category-head {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.507);
+    background-color: #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+
+}
+
+.board-category-content {
+    
+}

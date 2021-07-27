@@ -2,9 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: blue;
+    background-color: #ffffff;
     height: 50px;
-    border-radius: 5px;
 }
 
 .navbar-link {
@@ -15,8 +14,8 @@
     margin-right: 10px;
     width: 100px;
     border-radius: 5px;
-    border: 1px solid grey;
-    background-color: rgba(255, 255, 255, 0.425);
+    border: 1px solid rgba(202, 202, 202, 0.548);
+    background-color: #2b7cbb;
 }
 
 .navbar-header a {
