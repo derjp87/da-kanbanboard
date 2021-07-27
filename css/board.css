@@ -22,9 +22,11 @@
     justify-content: center;
     align-items: center;
     height: 30px;
+    font-weight: 700;
 
 }
 
 .board-category-content {
+    padding: 5px;
     
 }
