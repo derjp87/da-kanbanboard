@@ -1,0 +1,53 @@
+.addTask-main {
+    width: 100%;
+    margin: 10px;
+}
+
+.addTask-header {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.addTask-container {
+    width: 100%;
+    min-height: 400px;
+    background-color: #efefef;
+    border: 1px solid rgba(128, 128, 128, 0.349);
+}
+
+.addTask-container-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addTask-container-headlines {
+    width: 90%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addTask-container-headlines-fields{
+    width: 45%;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.addTask-container-edit {
+    width: 90%;
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addTask-container-edit-fields {
+    width: 45%;
+}
+
+.addTask-input {
+    width: 95%;
+    height: 30px;
+    outline: none;
+}
