@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-07-27" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="3.1.3100" locale="de_DE">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-07-27" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="3.1.3102" locale="de_DE">
     <description/>
     <view zooming-state="default:2" id="gantt-chart">
-        <field id="tpd3" name="Vorgang" width="167" order="0"/>
-        <field id="tpd4" name="Anfang" width="65" order="1"/>
-        <field id="tpd5" name="Ende" width="64" order="2"/>
+        <field id="tpd3" name="Vorgang" width="158" order="0"/>
+        <field id="tpd4" name="Anfang" width="62" order="1"/>
+        <field id="tpd5" name="Ende" width="61" order="2"/>
     </view>
     <view id="resource-table">
         <field id="0" name="Ressource" width="210" order="0"/>
@@ -33,7 +33,11 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="addTask.css" meeting="false" start="2021-07-27" duration="1" complete="0" expand="true"/>
+        <task id="0" name="addTask.css" color="#8cb6ce" meeting="false" start="2021-07-27" duration="1" complete="0" thirdDate="2021-07-27" thirdDate-constraint="0" expand="true">
+            <notes>
+                <![CDATA[testnotiz]]>
+            </notes>
+        </task>
         <task id="1" name="backlog.css" meeting="false" start="2021-07-27" duration="1" complete="0" expand="true"/>
         <task id="2" name="board.css" meeting="false" start="2021-07-27" duration="1" complete="0" expand="true"/>
         <task id="3" name="help.css" meeting="false" start="2021-07-27" duration="1" complete="0" expand="true"/>
