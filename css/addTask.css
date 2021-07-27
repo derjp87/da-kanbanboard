@@ -32,6 +32,7 @@
 .addTask-container-headlines-fields{
     width: 45%;
     font-size: 16px;
+    color: #2b7cbb;
     font-weight: 700;
 }
 
@@ -48,6 +49,22 @@
 
 .addTask-input {
     width: 95%;
-    height: 30px;
+    height: 40px;
     outline: none;
+    border: 1px solid rgba(128, 128, 128, 0.699);
+}
+
+.addTask-dropdown {
+    width: 97%;
+    height: 50px;
+    outline: none;
+    border: 1px solid rgba(128, 128, 128, 0.699);
+}
+
+.addTask-input-description {
+    width: 95%;
+    height: 150px;
+    outline: none;
+    resize: none;
+    border: 1px solid rgba(128, 128, 128, 0.699);
 }
