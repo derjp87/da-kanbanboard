@@ -41,8 +41,8 @@
                             <div class="addTask-container-headlines-fields">DUE DATE</div>
                         </div>
                         <div class="addTask-container-edit">
-                            <div class="addTask-container-edit-fields"><input type="text" class="addTask-input"></div>
-                            <div class="addTask-container-edit-fields"><input type="date" class="addTask-input"></div>
+                            <div class="addTask-container-edit-fields"><input type="text" class="addTask-input" id="addTaskTitle"></div>
+                            <div class="addTask-container-edit-fields"><input type="date" class="addTask-input" id="addTaskDueDate"></div>
                         </div>
                     </div>
                     <div class="addTask-container-line">
@@ -52,14 +52,14 @@
                         </div>
                         <div class="addTask-container-edit">
                             <div class="addTask-container-edit-fields">
-                                <select class="addTask-dropdown">
+                                <select class="addTask-dropdown" id="addTaskCategory">
                                     <option value="management">Management</option>
                                     <option value="product">Product</option>
                                     <option value="sale">Sale</option>
                                 </select>
                             </div>
                             <div class="addTask-container-edit-fields">
-                                <select class="addTask-dropdown">
+                                <select class="addTask-dropdown" id="addTaskUrgency">
                                     <option value="high">High</option>
                                     <option value="middle">Middle</option>
                                     <option value="low">Low</option>
@@ -73,10 +73,10 @@
                             <div class="addTask-container-headlines-fields">ASSIGNED TO</div>
                         </div>
                         <div class="addTask-container-edit">
-                            <div class="addTask-container-edit-fields"><textarea class="addTask-input-description"></textarea></div>
+                            <div class="addTask-container-edit-fields"><textarea class="addTask-input-description" id="addTaskDescription"></textarea></div>
                             <div class="addTask-container-edit-assignedTo">
                                 <div class="addTask-users"> 
-                                    <div></div>
+                                    <div id="addTaskAssignedTo"></div>
                                     <div>
                                         <div class="addTask-addUser"><img class="addTask-addUserImg" src="img/add.png"></div>
                                     </div>
