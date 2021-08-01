@@ -2,7 +2,7 @@ function init() {
     includeHTML();
 
     firebase.auth().onAuthStateChanged(function (user) {
-        initNavBar(user);
+        //initNavBar(user);
         if (user) {
             console.log(user);
             // User is signed in.
@@ -10,7 +10,7 @@ function init() {
         } else {
             // No user is signed in.
             // The start method will wait until the DOM is loaded.
-            ui.start('#firebaseui-auth-container', uiConfig);
+            ui.start('firebaseui-auth-container', uiConfig);
         }
     });
 }
