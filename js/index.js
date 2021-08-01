@@ -1,15 +1,13 @@
 function init() {
-    includeHTML();
-
+    
     firebase.auth().onAuthStateChanged(function (user) {
-        //initNavBar(user);
         if (user) {
             console.log(user);
-            // User is signed in.
+            //User is signed in.
             window.location.assign("board.html");
         } else {
             // No user is signed in.
-            // The start method will wait until the DOM is loaded.
+            //The start method will wait until the Dom is loaded.
             ui.start('#firebaseui-auth-container', uiConfig);
         }
     });

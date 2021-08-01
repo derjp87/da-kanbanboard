@@ -1,0 +1,11 @@
+.index-main-content {
+    width: 100%;
+    min-height: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.781);
+    border-radius: 3px;
+    margin: 40px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
