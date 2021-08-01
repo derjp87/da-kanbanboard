@@ -18,14 +18,13 @@ function addTaskCreate() {
             if (date.length == 0) {
                 alert('Please enter a due date!');
             } else {
-                db.collection("tasks").add({
+                db.collection("tasks-todo").add({
                     title: title,
                     duedate: date,
                     category: category,
                     urgency: urgency,
                     description: description,
-                    status: 'todo',
-
+                    
                 })
                     .then((docRef) => {
                         console.log("Document written with ID: ", docRef.id);
