@@ -6,11 +6,11 @@ function init() {
         if (user) {
             console.log(user);
             // User is signed in.
-            //window.location.assign("addTask.html");
+            window.location.assign("board.html");
         } else {
             // No user is signed in.
             // The start method will wait until the DOM is loaded.
-            ui.start('firebaseui-auth-container', uiConfig);
+            ui.start('#firebaseui-auth-container', uiConfig);
         }
     });
 }
