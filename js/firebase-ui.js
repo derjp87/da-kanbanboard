@@ -19,6 +19,7 @@ var uiConfig = {
           if(authResult.additionalUserInfo.isNewUser) {
             console.log("new user");
             setProfile(authResult.user);
+            setTimeout(function(){window.location.assign("board.html")}, 1000);
             
           }else{
             console.log("WELCOME BACK");

@@ -4,7 +4,7 @@ function init() {
         if (user) {
             console.log(user);
             //User is signed in.
-            window.location.assign("board.html");
+            //window.location.assign("board.html");
         } else {
             // No user is signed in.
             //The start method will wait until the Dom is loaded.
