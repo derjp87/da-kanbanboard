@@ -1,3 +1,11 @@
+async function showUserList() {
+    let users = firebase.firestore().collection('users');
+    let response = await users.get();
+    response.forEach((r) => {
+        console.log(r.data()['displayName']);
+    });
+}
+
 function addTaskCreate() {
     let title = document.getElementById('addTaskTitle').value;
     let date = document.getElementById('addTaskDueDate').value;

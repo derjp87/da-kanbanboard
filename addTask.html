@@ -78,9 +78,15 @@
                                     id="addTaskDescription"></textarea></div>
                             <div class="addTask-container-edit-assignedTo">
                                 <div class="addTask-users">
-                                    <div id="addTaskAssignedTo"></div>
+                                    <div id="addTaskAssignedTo">
+                                        Users
+                                    </div>
                                     <div>
-                                        <div class="addTask-addUser"><img class="addTask-addUserImg" src="img/add.png">
+                                        <div class="addTask-addUser">
+                                            <img onclick="showUserList()" class="addTask-addUserImg" src="img/add.png">
+                                        </div>
+                                        <div class="addTask-addUser-users" id="addTaskUserList">
+
                                         </div>
                                     </div>
                                 </div>
