@@ -1,9 +1,16 @@
 async function showUserList() {
     let users = firebase.firestore().collection('users');
     let response = await users.get();
-    response.forEach((r) => {
-        console.log(r.data()['displayName']);
+    response.forEach((i) => {
+        console.log(i.data());
     });
+
+    let userlist = response.forEach([i]);
+
+    for (let i = 0; i < userlist.length; i++) {
+        document.getElementById('addTaskUserList').innerHTML += `
+        <div>${userlist['displayName']}</div>`;
+    }
 }
 
 function addTaskCreate() {
