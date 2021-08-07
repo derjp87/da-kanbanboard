@@ -16,7 +16,6 @@ var uiConfig = {
           // Process result. This will not trigger on merge conflicts.
           // On success redirect to signInSuccessUrl.
           console.log("USER SIGNED IN:", authResult, redirectUrl);
-          window.location.assign("board.html");
           if(authResult.additionalUserInfo.isNewUser) {
             console.log("new user");
             setProfile(authResult.user);
@@ -67,7 +66,7 @@ var uiConfig = {
                 // resolves.
                 // signInSuccessWithAuthResult will not run. Successful sign-in
                 // logic has to be run explicitly.
-                window.location.assign('addTask.html');
+                window.location.assign('board.html');
               });
         }
     },

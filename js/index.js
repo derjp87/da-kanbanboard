@@ -4,7 +4,7 @@ function init() {
         if (user) {
             console.log(user);
             //User is signed in.
-            //window.location.assign("board.html");
+            setTimeout(function(){window.location.assign("board.html")}, 1000);
         } else {
             // No user is signed in.
             //The start method will wait until the Dom is loaded.
@@ -24,3 +24,4 @@ function setProfile(user) {
         isAnonymous: user.isAnonymous
     });
 }
+
