@@ -16,6 +16,7 @@ var uiConfig = {
           // Process result. This will not trigger on merge conflicts.
           // On success redirect to signInSuccessUrl.
           console.log("USER SIGNED IN:", authResult, redirectUrl);
+          window.location.assign("board.html");
           if(authResult.additionalUserInfo.isNewUser) {
             console.log("new user");
             setProfile(authResult.user);

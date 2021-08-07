@@ -5,7 +5,7 @@ async function showUserList() {
         console.log(i.data());
     });
 
-    let userlist = response.forEach([i]);
+    let userlist = response.forEach(i);
 
     for (let i = 0; i < userlist.length; i++) {
         document.getElementById('addTaskUserList').innerHTML += `
