@@ -1,25 +1,35 @@
-let userlist = [];
+let userList = [];
+let assignedUsers = [];
 
 async function showUserList() {
-    userlist = [];
+    userList = [];
     let users = firebase.firestore().collection('users');
     let response = await users.get();
     response.forEach((i) => {
         console.log(i.data());
-        userlist.push(i.data());
+        userList.push(i.data());
     });
-    document.getElementById('addTaskUserList').innerHTML ='';
+    document.getElementById('addTaskUserList').innerHTML = '';
 
-    for (let i = 0; i < userlist.length; i++) {
-        
+    for (let i = 0; i < userList.length; i++) {
+
         document.getElementById('addTaskUserList').innerHTML += `
-        <div onclick="addTaskAddUser(${i})">${userlist[i]['displayName']}</div>`;
+        <div onclick="addTaskAddUser(${i})">${userList[i]['displayName']}</div>`;
     }
 }
 
 function addTaskAddUser(i) {
-    document.getElementById('addTaskAssignedTo').innerHTML += `
-    <div>${userlist[i]['displayName']}</div>`;
+
+    if (!assignedUsers.includes(userList[i]['displayName'])) {
+        assignedUsers.push(userList[i]['displayName']);
+        document.getElementById('addTaskAssignedTo').innerHTML = '';
+
+        for (let i = 0; i < assignedUsers.length; i++) {
+            document.getElementById('addTaskAssignedTo').innerHTML += `
+            <div>${assignedUsers[i]}</div>`;
+        }
+    }
+
 }
 
 function addTaskCreate() {
@@ -28,6 +38,7 @@ function addTaskCreate() {
     let category = document.getElementById('addTaskCategory').value;
     let urgency = document.getElementById('addTaskUrgency').value;
     let description = document.getElementById('addTaskDescription').value;
+    users = assignedUsers;
     title = title.trim();
     description = description.trim();  //trim löscht die leerzeichen am anfang und am ende eines textes
 
@@ -42,13 +53,16 @@ function addTaskCreate() {
             if (date.length == 0) {
                 alert('Please enter a due date!');
             } else {
+                if (assignedUsers.length == 0) {
+                    alert('Please assign user!')
+                } else {
                 db.collection("tasks-todo").add({
                     title: title,
                     duedate: date,
                     category: category,
                     urgency: urgency,
                     description: description,
-                    
+                    assignedusers: users,
                 })
                     .then((docRef) => {
                         console.log("Document written with ID: ", docRef.id);
@@ -59,6 +73,7 @@ function addTaskCreate() {
                         console.error("Error adding document: ", error);
 
                     });
+                }
             }
         }
     }
