@@ -1,16 +1,25 @@
+let userlist = [];
+
 async function showUserList() {
+    userlist = [];
     let users = firebase.firestore().collection('users');
     let response = await users.get();
     response.forEach((i) => {
         console.log(i.data());
+        userlist.push(i.data());
     });
-
-    let userlist = response.forEach(i);
+    document.getElementById('addTaskUserList').innerHTML ='';
 
     for (let i = 0; i < userlist.length; i++) {
+        
         document.getElementById('addTaskUserList').innerHTML += `
-        <div>${userlist['displayName']}</div>`;
+        <div onclick="addTaskAddUser(${i})">${userlist[i]['displayName']}</div>`;
     }
+}
+
+function addTaskAddUser(i) {
+    document.getElementById('addTaskAssignedTo').innerHTML += `
+    <div>${userlist[i]['displayName']}</div>`;
 }
 
 function addTaskCreate() {
