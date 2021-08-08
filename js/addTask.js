@@ -56,7 +56,7 @@ function addTaskCreate() {
                 if (assignedUsers.length == 0) {
                     alert('Please assign user!')
                 } else {
-                db.collection("tasks-todo").add({
+                db.collection("tasks").doc("allTasks").collection("tasks-todo").add({
                     title: title,
                     duedate: date,
                     category: category,
