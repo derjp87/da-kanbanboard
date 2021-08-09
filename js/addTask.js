@@ -26,11 +26,23 @@ function addTaskAddUser(i) {
 
         for (let i = 0; i < assignedUsers.length; i++) {
             document.getElementById('addTaskAssignedTo').innerHTML += `
-            <div>${assignedUsers[i]}</div>`;
+            <div onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
         }
     }
 
 }
+
+function addTaskRemoveUser(i) {
+
+        assignedUsers.splice(i, 1);
+        document.getElementById('addTaskAssignedTo').innerHTML = '';
+
+        for (let i = 0; i < assignedUsers.length; i++) {
+            document.getElementById('addTaskAssignedTo').innerHTML += `
+            <div onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
+        }
+    }
+
 
 function addTaskCreate() {
     let title = document.getElementById('addTaskTitle').value;
