@@ -56,13 +56,14 @@ function addTaskCreate() {
                 if (assignedUsers.length == 0) {
                     alert('Please assign user!')
                 } else {
-                db.collection("tasks").doc("allTasks").collection("tasks-todo").add({
+                db.collection('tasks').add({
                     title: title,
                     duedate: date,
                     category: category,
                     urgency: urgency,
                     description: description,
                     assignedusers: users,
+                    status: 'todo',
                 })
                     .then((docRef) => {
                         console.log("Document written with ID: ", docRef.id);
