@@ -1,7 +1,3 @@
-function init() {
-    loadTasks();
-}
-
 let allTasks = [];
 
 async function loadTasks() {

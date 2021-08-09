@@ -4,6 +4,7 @@ function init() {
       if (user) {
           // User is signed in.
           includeHTML();
+          loadTasks();
           //initNavBar(user);
           //setDateMinToday();
           //setTasks(user.uid);
