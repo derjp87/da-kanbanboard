@@ -1,75 +1,109 @@
 body {
     margin: 0;
+    font-family: PT Sans;
 }
 
-.main-content {
-    background-color: rgb(186, 246, 191);
-    height: 100vh;
+
+   .main-content {
+  flex-direction: column;
+} 
+
+.backlog-main {
+    height: 100%;
+    margin: 10px;
+    background-color: #efefef;
+    border: 1px solid rgb(195, 193, 193);
+    border-radius: 3px;
+}
+
+
+ .headers {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #2b7cbb;
+    font-weight: 700;
+padding-top: 10px;
+margin-left: 50px;
+margin-right: 50px;
+
 }
 
-.headers {
-    width: 95vw;
-    display: flex;
-    margin-left: 150px;
-    margin-top: 25px;
+.backlog-header {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+.h1 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 20px;
+    margin: 10px;
 }
 
-.h3 {
-margin-right: 300px;
-margin-top: 10px;
-}
 
 
 .todo-container {
-    width: 95vw;
-    height: 100px;
-    margin: 10px;
-    background-color: rgb(215, 253, 144);
+    height: 82px;
+    margin: 5px;
+    background-color: #ffffff;
     display: flex;
+    align-items: center;    
+    justify-content: space-between;
+    border-radius: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.781);
+}
+
+.todo-container a {
+    font-size: 14px;
+    color: #2b7cbb;
+    font-weight: 500;
+}
+
+.assigned-to {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-radius: 10px;
 }
 
 .category-color {
-    height: 100px;
-    background-color: yellowgreen;
-    width: 15px;
+    height: 82px;
+    background-color: violet;
+    width: 8px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
 .personal-img {
-height: 70px;
-width: 70px;
+height: 60px;
+width: 60px;
 border-radius: 50%;
-margin: 15px;
-margin-left: 30px;
+margin: 10px;
 }
 
 .personal-data {
 height: 100px;
-width: 450px;
+width: 200px;
 display: flex;
 flex-direction: column;
 justify-content: center;
-margin-left: 15px;
+
 }
 
 .name {
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .category {
-    width: 200px;
+    width: 100px;
 }
 
 .details {
-    max-height: 80px;
-    width: 1000px;
+    max-height: 60px;
+
+    max-width: 250px;
     overflow: auto;
-    margin: 10px;
+    font-size: 12px;
 }
+
