@@ -10,6 +10,19 @@ body {
     align-items: center;
 }
 
+.headers {
+    width: 95vw;
+    display: flex;
+    margin-left: 150px;
+    margin-top: 25px;
+}
+
+.h3 {
+margin-right: 300px;
+margin-top: 10px;
+}
+
+
 .todo-container {
     width: 95vw;
     height: 100px;
