@@ -5,8 +5,10 @@ async function loadTasks() {
     let tasks = firebase.firestore().collection('tasks');
     let response = await tasks.get();
     response.forEach((i) => {
-         console.log(i.data());
-         allTasks.push(i.data());
+         console.log(i.data(), i.id);
+         let task = i.data();
+         task.id = i.id;
+         allTasks.push(task);
 
     });
     document.getElementById('boardToDo').innerHTML = '';
