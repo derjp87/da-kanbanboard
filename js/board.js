@@ -21,18 +21,18 @@ async function loadTasks() {
 
         if (tasksStatus == 'todo') {
             document.getElementById('boardToDo').innerHTML += `
-            <div draggable="true" ondragstart="startDragging(${allTasks['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+            <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
         } else {
             if (tasksStatus == 'inprogress') {
                 document.getElementById('boardInProgress').innerHTML += `
-                <div draggable="true" ondragstart="startDragging(${allTasks['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+                <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
             } else {
                 if (tasksStatus == 'testing') {
                     document.getElementById('boardTesting').innerHTML += `
-                    <div draggable="true" ondragstart="startDragging(${allTasks['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+                    <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
                 } else {
                     document.getElementById('boardDone').innerHTML += `
-                    <div draggable="true" ondragstart="startDragging(${allTasks['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+                    <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
                 }
             }
         }
@@ -48,7 +48,9 @@ function allowDrop(event) {
 }
 
 function moveTo(status) {
-    allTasks[currentDraggedElement]['status'] = status;
+    let taskToMove = allTasks.find ( task => task.id == currentDraggedElement );
+    taskToMove.status = status;
+    firebase.firestore().collection('tasks').document(currentDraggedElement).set(taskToMove);
     reloadTasks();
 }
 
@@ -63,18 +65,18 @@ function reloadTasks() {
 
         if (tasksStatus == 'todo') {
             document.getElementById('boardToDo').innerHTML += `
-            <div draggable="true" ondragstart="startDragging(${allTasks['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+            <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
         } else {
             if (tasksStatus == 'inprogress') {
                 document.getElementById('boardInProgress').innerHTML += `
-                <div draggable="true" ondragstart="startDragging(${allTasks['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+                <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
             } else {
                 if (tasksStatus == 'testing') {
                     document.getElementById('boardTesting').innerHTML += `
-                    <div draggable="true" ondragstart="startDragging(${allTasks['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+                    <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
                 } else {
                     document.getElementById('boardDone').innerHTML += `
-                    <div draggable="true" ondragstart="startDragging(${allTasks['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+                    <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
                 }
             }
         }
