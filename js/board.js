@@ -21,18 +21,18 @@ async function loadTasks() {
 
         if (tasksStatus == 'todo') {
             document.getElementById('boardToDo').innerHTML += `
-            <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+            <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
         } else {
             if (tasksStatus == 'inprogress') {
                 document.getElementById('boardInProgress').innerHTML += `
-                <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+                <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
             } else {
                 if (tasksStatus == 'testing') {
                     document.getElementById('boardTesting').innerHTML += `
-                    <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+                    <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
                 } else {
                     document.getElementById('boardDone').innerHTML += `
-                    <div draggable="true" ondragstart="startDragging(${allTasks[i]['id']})" class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+                    <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
                 }
             }
         }
