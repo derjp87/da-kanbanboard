@@ -50,7 +50,7 @@ function allowDrop(event) {
 function moveTo(status) {
     let taskToMove = allTasks.find ( task => task.id == currentDraggedElement );
     taskToMove.status = status;
-    firebase.firestore().collection('tasks').document(currentDraggedElement).set(taskToMove);
+    firebase.firestore().collection('tasks').doc(currentDraggedElement).set(taskToMove);
     reloadTasks();
 }
 

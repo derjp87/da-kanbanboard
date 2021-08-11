@@ -31,35 +31,35 @@
     <div class="main">
         <div class="main-content">
             <div class="board-main">
-                <div class="board-category">
+                <div class="board-category" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
                     <div class="board-category-head">
                         TO-DO
                     </div>
-                    <div class="board-category-content" id="boardToDo" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
+                    <div class="board-category-content" id="boardToDo">
 
                     </div>
                 </div>
-                <div class="board-category">
+                <div class="board-category" ondrop="moveTo('inprogress')" ondragover="allowDrop(event)">
                     <div class="board-category-head">
                         IN PROGRESS
                     </div>
-                    <div class="board-category-content" id="boardInProgress" ondrop="moveTo('inprogress')" ondragover="allowDrop(event)">
+                    <div class="board-category-content" id="boardInProgress">
 
                     </div>
                 </div>
-                <div class="board-category">
+                <div class="board-category" ondrop="moveTo('testing')" ondragover="allowDrop(event)">
                     <div class="board-category-head">
                         TESTING
                     </div>
-                    <div class="board-category-content" id="boardTesting" ondrop="moveTo('testing')" ondragover="allowDrop(event)">
+                    <div class="board-category-content" id="boardTesting">
 
                     </div>
                 </div>
-                <div class="board-category">
+                <div class="board-category" ondrop="moveTo('done')" ondragover="allowDrop(event)">
                     <div class="board-category-head">
                         DONE
                     </div>
-                    <div class="board-category-content" id="boardDone" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+                    <div class="board-category-content" id="boardDone">
 
                     </div>
                 </div>
