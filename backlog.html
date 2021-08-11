@@ -1,59 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PJM-Kanban</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/overall.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/backlog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/overall.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/backlog.css" />
     <script src="js/overall.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/backlog.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
+  </head>
 
-</head>
-
-<body onload="init()">
+  <body onload="init()">
     <div class="header" w3-include-html="templates/navbar.html"></div>
 
-    <div class="logo"><img class="logo-img" src="img/logo.png"></div>
+    <div class="logo"><img class="logo-img" src="img/logo.png" /></div>
 
     <div class="main">
+      <div class="main-content">
+        <h1 class="h1">Backlog</h1>
+        <div class="backlog-main">
+          <div class="headers">
+            <span>ASSIGNED TO</span>
+            <span style="margin-right: 70px">CATEGORY</span>
+            <span>DETAILS</span>
+          </div>
 
-    <div  class="main-content">
-         <h1 class="h1">Backlog</h1>
-<div id="mainContent" class="backlog-main">
-               
-                        <div class="headers">
-                            <span>ASSIGNED TO</span>
-                            <span style="margin-right: 30px">CATEGORY</span>
-                            <span>DETAILS</span>
-                        </div>
-
-        <div class="todo-container">
-            <div class="assigned-to">
-            <div class="category-color"></div>
-            <img class="personal-img" src="/img/add.png">
-            <div class="personal-data">
-                <span class="name">Name</span>
-               <a href="#">anyEmail@something.net</a>  
-            </div>  
-            </div>
-            <div class="category">Marketing</div>
-            <div class="details">Lorem lore  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit error doloribus quo, totam nisi laborum odit reprehenderit aut nihil fugit itaque, magnam excepturi minus maxime quod vero ipsum voluptatum. Alias! ipsum dolor sit amet consectetur adipisicing elit. Aliquid odit voluptas minus asperiores excepturi blanditiis;</div>
+          
+          <div id="mainContent">
+          <!--backlog containers add here-->
         </div>
+      </div>
     </div>
-</div>
-</div>
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
@@ -63,6 +56,29 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
 
     <script src="js/firebase.js"></script>
-</body>
-
+  </body>
 </html>
+
+
+<!--  Backlogcontainer structure:
+  <div class="todo-container">
+              <div class="assigned-to">
+                <div id="backlog-color" class="category-color"></div>
+                <img id="backlog-img" class="personal-img" src="/img/add.png" />
+                <div class="personal-data">
+                  <span id="backlog-name" class="name">Name</span>
+                  <a id="backlog-email" href="#">anyEmail@something.net</a>
+                </div>
+              </div>
+              <div id="backlog-category" class="category">Marketing</div>
+              <div id="backlog-details" class="details">
+                Lorem lore Lorem ipsum, dolor sit amet consectetur adipisicing
+                elit. Sit error doloribus quo, totam nisi laborum odit
+                reprehenderit aut nihil fugit itaque, magnam excepturi minus
+                maxime quod vero ipsum voluptatum. Alias! ipsum dolor sit amet
+                consectetur adipisicing elit. Aliquid odit voluptas minus
+                asperiores excepturi blanditiis;
+              </div>
+            </div>
+          </div>
+-->

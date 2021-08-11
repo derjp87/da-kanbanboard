@@ -87,7 +87,6 @@ width: 200px;
 display: flex;
 flex-direction: column;
 justify-content: center;
-
 }
 
 .name {
@@ -101,9 +100,15 @@ justify-content: center;
 
 .details {
     max-height: 60px;
-
-    max-width: 250px;
+    max-width: 300px;
     overflow: auto;
     font-size: 12px;
 }
 
+.no-entries {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 600;
+    color: #2b7cbb;
+}
