@@ -1,10 +1,24 @@
-let allBackLogs = [];
+function init() {
 
-function init() {console.log(allBackLogs.length);
-  renderBacklog();
-  
+  firebase.auth().onAuthStateChanged(async function (user) {
+      if (user) {
+          // User is signed in.
+          includeHTML();
+          //loadTasks();
+          //showUserList();
+          renderBacklog();
+          //initNavBar(user);
+          //setDateMinToday();
+          //setTasks(user.uid);
+          //setUsers();
+      } else {
+          // No user is signed in.
+          window.location.assign("index.html");
+      }
+  });
 }
 
+let allBackLogs = [];
 
 function renderBacklog() {
   let backlogContainer = document.getElementById('mainContent');
