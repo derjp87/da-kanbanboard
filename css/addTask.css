@@ -92,18 +92,27 @@
 }
 
 .addTask-addUser {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
+    border:  1px solid rgba(128, 128, 128, 0.349);
+    margin-bottom: 3px;
+    padding-left: 3px;
     cursor: pointer;
-    width: 14%;
+    background-color: #efefef;
 }
 
-.addTask-addUserImg {
-    width: 35px;
-    height: 35px;
+.addTask-addUser:hover {
+    background-color: #dcffc2;
+}
+
+.addTask-removeUser {
+    border:  1px solid rgba(128, 128, 128, 0.349);
+    margin-bottom: 3px;
+    padding-left: 3px;
+    cursor: pointer;
+    background-color: #efefef;
+}
+
+.addTask-removeUser:hover {
+    background-color: #ffccd6;
 }
 
 .addTask-assignedTo {
@@ -157,28 +166,35 @@
 
 .addTask-color-none {
     background-color: #efefef;
+    font-weight: 700;
 }
 
 .addTask-color-green {
     background-color: #dcffc2;
+    font-weight: 700;
 }
 
 .addTask-color-blue {
     background-color: #c3ddff;
+    font-weight: 700;
 }
 
 .addTask-color-red {
     background-color: #ffccd6;
+    font-weight: 700;
 }
 
 .addTask-color-yellow {
     background-color: #ffffe0;
+    font-weight: 700;
 }
 
 .addTask-color-purple {
     background-color: #e2d2f2;
+    font-weight: 700;
 }
 
 .addTask-color-orange {
     background-color: #ffd089;
+    font-weight: 700;
 }

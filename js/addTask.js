@@ -33,7 +33,7 @@ async function showUserList() {
     for (let i = 0; i < userList.length; i++) {
 
         document.getElementById('addTaskUserList').innerHTML += `
-        <div onclick="addTaskAddUser(${i})">${userList[i]['displayName']}</div>`;
+        <div class="addTask-addUser" onclick="addTaskAddUser(${i})">${userList[i]['displayName']}</div>`;
     }
 }
 
@@ -45,7 +45,7 @@ function addTaskAddUser(i) {
 
         for (let i = 0; i < assignedUsers.length; i++) {
             document.getElementById('addTaskAssignedTo').innerHTML += `
-            <div onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
+            <div class="addTask-removeUser" onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
         }
     }
 
@@ -58,7 +58,7 @@ function addTaskRemoveUser(i) {
 
         for (let i = 0; i < assignedUsers.length; i++) {
             document.getElementById('addTaskAssignedTo').innerHTML += `
-            <div onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
+            <div class="addTask-removeUser" onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
         }
     }
 
