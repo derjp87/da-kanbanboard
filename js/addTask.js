@@ -69,6 +69,7 @@ function addTaskCreate() {
     let category = document.getElementById('addTaskCategory').value;
     let urgency = document.getElementById('addTaskUrgency').value;
     let description = document.getElementById('addTaskDescription').value;
+    let color = document.getElementById('addTaskColor').value;
     users = assignedUsers;
     title = title.trim();
     description = description.trim();  //trim löscht die leerzeichen am anfang und am ende eines textes
@@ -95,6 +96,7 @@ function addTaskCreate() {
                     description: description,
                     assignedusers: users,
                     status: 'todo',
+                    taskcolor: color,
                 })
                     .then((docRef) => {
                         console.log("Document written with ID: ", docRef.id);
@@ -109,4 +111,9 @@ function addTaskCreate() {
             }
         }
     }
+}
+
+function changeColorOfMenu() {
+    let mymenu = document.getElementById('addTaskColor');
+    mymenu.style = `background-color: ${mymenu.value};`;
 }

@@ -99,12 +99,14 @@
                         </div>
                         <div class="addTask-container-edit">
                             <div class="addTask-container-edit-fields">
-                                <select class="addTask-dropdown" id="addTaskColour">
-                                    <option value="none">none</option>
-                                    <option value="green" class="addTask-colour-green">green</option>
-                                    <option value="blue" class="addTask-colour-blue">blue</option>
-                                    <option value="red" class="addTask-colour-red">red</option>
-                                    <option value="yellow" class="addTask-colour-yellow">yellow</option>
+                                <select class="addTask-dropdown" style="background-color: #ffffff;" id="addTaskColor" onchange="changeColorOfMenu()">
+                                    <option value="#efefef" class="addTask-color-none" style="font-weight: 700">None</option>
+                                    <option value="#dcffc2" class="addTask-color-green" style="font-weight: 700">Green</option>
+                                    <option value="#c3ddff" class="addTask-color-blue" style="font-weight: 700">Blue</option>
+                                    <option value="#ffccd6" class="addTask-color-red" style="font-weight: 700">Red</option>
+                                    <option value="#ffffe0" class="addTask-color-yellow" style="font-weight: 700">Yellow</option>
+                                    <option value="#e2d2f2" class="addTask-color-purple" style="font-weight: 700">Purple</option>
+                                    <option value="#ffd089" class="addTask-color-orange" style="font-weight: 700">Orange</option>
                                 </select>
                             </div>
                             <div class="addTask-container-edit-assignedTo-buttons">
