@@ -1,18 +1,12 @@
 function init() {
 
   firebase.auth().onAuthStateChanged(async function (user) {
-    if (user) {
-      // User is signed in.
-      includeHTML();
-      //loadTasks();
-      //showUserList();
+    if (user) { // User is signed in.
+     includeHTML();
+
       renderBacklog();
-      //initNavBar(user);
-      //setDateMinToday();
-      //setTasks(user.uid);
-      //setUsers();
-    } else {
-      // No user is signed in.
+    
+    } else { // No user is signed in.
       window.location.assign("index.html");
     }
   });
@@ -30,7 +24,7 @@ async function renderBacklog() {
     backLogs.id = i.id;
     allBackLogs.push(backLogs);
   });
-
+  
   let backlogContainer = document.getElementById('mainContent');
 
   if (allBackLogs.length > 0) {
@@ -50,10 +44,10 @@ async function renderBacklog() {
           <div id="backlog-details" class="details"></div>
         </div>
         `;
-    }
-  } else {
+    }  
+  }
+   else {
     backlogContainer.innerHTML = `<div class="todo-container no-entries">"Keine Einträge vorhanden..."</div>`;
-
+   }
   }
 
-}
