@@ -59,6 +59,10 @@ padding-top: 10px;
     font-weight: 500;
 }
 
+.todo-container:hover {
+cursor: pointer;
+}
+
 .assigned-to {
     display: flex;
     justify-content: space-between;

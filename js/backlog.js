@@ -3,7 +3,7 @@ function init() {
   firebase.auth().onAuthStateChanged(async function (user) {
     if (user) { // User is signed in.
      includeHTML();
-     loadCollectionFromFirebase();
+
       renderBacklog();
     
     } else { // No user is signed in.
@@ -14,7 +14,7 @@ function init() {
 
 let allBackLogs = [];
 
-async function loadCollectionFromFirebase() {
+async function renderBacklog() {
   allBackLogs = [];
   let backLogs = firebase.firestore().collection('tasks'); // hier wird definiert, auf was er bei backLogs zugreifen soll. Datenbankpfad zu den Tasks!
   let response = await backLogs.get(); // er soll warten bis er die "backLogs" heruntergeladen hat, deswegen await und deswegen ist dies eine "async function"
@@ -24,9 +24,7 @@ async function loadCollectionFromFirebase() {
     backLogs.id = i.id;
     allBackLogs.push(backLogs);
   });
-}
-
-function renderBacklog() {
+  
   let backlogContainer = document.getElementById('mainContent');
 
   if (allBackLogs.length > 0) {
@@ -34,7 +32,7 @@ function renderBacklog() {
     for (let i = 0; i < allBackLogs.length; i++) {
 
       backlogContainer.innerHTML += `
-        <div class="todo-container">
+        <div class="todo-container" onclick="openBoard()">
           <div class="assigned-to">
             <div id="backlog-color" class="category-color" style="background-color: ${allBackLogs[i]['taskcolor']};"></div>
               <div class="personal-data">
@@ -52,3 +50,7 @@ function renderBacklog() {
     backlogContainer.innerHTML = `<div class="todo-container no-entries">"Keine Einträge vorhanden..."</div>`;
    }
   }
+
+function openBoard() {
+  window.location.href = 'board.html';
+}
