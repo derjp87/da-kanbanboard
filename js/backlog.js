@@ -3,7 +3,7 @@ function init() {
   firebase.auth().onAuthStateChanged(async function (user) {
     if (user) { // User is signed in.
      includeHTML();
-
+     loadCollectionFromFirebase();
       renderBacklog();
     
     } else { // No user is signed in.
@@ -14,7 +14,7 @@ function init() {
 
 let allBackLogs = [];
 
-async function renderBacklog() {
+async function loadCollectionFromFirebase() {
   allBackLogs = [];
   let backLogs = firebase.firestore().collection('tasks'); // hier wird definiert, auf was er bei backLogs zugreifen soll. Datenbankpfad zu den Tasks!
   let response = await backLogs.get(); // er soll warten bis er die "backLogs" heruntergeladen hat, deswegen await und deswegen ist dies eine "async function"
@@ -24,7 +24,9 @@ async function renderBacklog() {
     backLogs.id = i.id;
     allBackLogs.push(backLogs);
   });
-  
+}
+
+function renderBacklog() {
   let backlogContainer = document.getElementById('mainContent');
 
   if (allBackLogs.length > 0) {
@@ -50,4 +52,3 @@ async function renderBacklog() {
     backlogContainer.innerHTML = `<div class="todo-container no-entries">"Keine Einträge vorhanden..."</div>`;
    }
   }
-
