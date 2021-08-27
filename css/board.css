@@ -1,6 +1,6 @@
 .board-main {
-    width: 100%;
     margin: 10px;
+    min-height: 500px;
     background-color: #ffffff;
     display: flex;
     justify-content: center;

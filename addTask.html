@@ -23,95 +23,98 @@
 </head>
 
 <body onload="init()">
-    <div class="header" w3-include-html="templates/navbar.html"></div>
 
     <div class="logo"><img class="logo-img" src="img/logo.png"></div>
 
     <div class="main">
         <div class="main-content">
-            <div class="addTask-main">
-                <div class="addTask-header">
-                    Add Task
-                </div>
-                <div class="addTask-container">
-                    <div class="addTask-container-line">
-                        <div class="addTask-container-headlines">
-                            <div class="addTask-container-headlines-fields">TITLE</div>
-                            <div class="addTask-container-headlines-fields">DUE DATE</div>
-                        </div>
-                        <div class="addTask-container-edit">
-                            <div class="addTask-container-edit-fields"><input type="text" class="addTask-input"
-                                    id="addTaskTitle"></div>
-                            <div class="addTask-container-edit-fields"><input type="date" class="addTask-input"
-                                    id="addTaskDueDate"></div>
-                        </div>
+            <div class="header" w3-include-html="templates/navbar.html"></div>
+            <div class="main-content-border">
+                <div class="addTask-main">
+                    <div class="addTask-header">
+                        Add Task
                     </div>
-                    <div class="addTask-container-line">
-                        <div class="addTask-container-headlines">
-                            <div class="addTask-container-headlines-fields">CATEGORY</div>
-                            <div class="addTask-container-headlines-fields">URGENCY</div>
-                        </div>
-                        <div class="addTask-container-edit">
-                            <div class="addTask-container-edit-fields">
-                                <select class="addTask-dropdown" id="addTaskCategory">
-                                    <option value="Management">Management</option>
-                                    <option value="Product">Product</option>
-                                    <option value="Sale">Sale</option>
-                                </select>
+                    <div class="addTask-container">
+                        <div class="addTask-container-line">
+                            <div class="addTask-container-headlines">
+                                <div class="addTask-container-headlines-fields">TITLE</div>
+                                <div class="addTask-container-headlines-fields">DUE DATE</div>
                             </div>
-                            <div class="addTask-container-edit-fields">
-                                <select class="addTask-dropdown" id="addTaskUrgency">
-                                    <option value="High">High</option>
-                                    <option value="Middle">Middle</option>
-                                    <option value="Low">Low</option>
-                                </select>
+                            <div class="addTask-container-edit">
+                                <div class="addTask-container-edit-fields"><input type="text" class="addTask-input"
+                                        id="addTaskTitle"></div>
+                                <div class="addTask-container-edit-fields"><input type="date" class="addTask-input"
+                                        id="addTaskDueDate"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="addTask-container-line">
-                        <div class="addTask-container-headlines">
-                            <div class="addTask-container-headlines-fields">DESCRIPTION</div>
-                            <div class="addTask-container-headlines-fields">ASSIGNED TO</div>
+                        <div class="addTask-container-line">
+                            <div class="addTask-container-headlines">
+                                <div class="addTask-container-headlines-fields">CATEGORY</div>
+                                <div class="addTask-container-headlines-fields">URGENCY</div>
+                            </div>
+                            <div class="addTask-container-edit">
+                                <div class="addTask-container-edit-fields">
+                                    <select class="addTask-dropdown" id="addTaskCategory">
+                                        <option value="Management">Management</option>
+                                        <option value="Product">Product</option>
+                                        <option value="Sale">Sale</option>
+                                    </select>
+                                </div>
+                                <div class="addTask-container-edit-fields">
+                                    <select class="addTask-dropdown" id="addTaskUrgency">
+                                        <option value="High">High</option>
+                                        <option value="Middle">Middle</option>
+                                        <option value="Low">Low</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="addTask-container-edit">
-                            <div class="addTask-container-edit-fields"><textarea class="addTask-input-description"
-                                    id="addTaskDescription"></textarea></div>
-                            <div class="addTask-container-edit-assignedTo">
-                                <div class="addTask-users">
-                                    <div class="addTask-assignedTo" id="addTaskAssignedTo">   
-                                    </div>
-<!--                                    <div class="addTask-addUser">
+                        <div class="addTask-container-line">
+                            <div class="addTask-container-headlines">
+                                <div class="addTask-container-headlines-fields">DESCRIPTION</div>
+                                <div class="addTask-container-headlines-fields">ASSIGNED TO</div>
+                            </div>
+                            <div class="addTask-container-edit">
+                                <div class="addTask-container-edit-fields"><textarea class="addTask-input-description"
+                                        id="addTaskDescription"></textarea></div>
+                                <div class="addTask-container-edit-assignedTo">
+                                    <div class="addTask-users">
+                                        <div class="addTask-assignedTo" id="addTaskAssignedTo">
+                                        </div>
+                                        <!--                                    <div class="addTask-addUser">
                                         <img onclick="showUserList()" class="addTask-addUserImg" src="img/add.png"> 
                                     </div>
                                 -->
-                                    <div onload="showUserList()" class="addTask-addUser-list" id="addTaskUserList">
+                                        <div onload="showUserList()" class="addTask-addUser-list" id="addTaskUserList">
 
+                                        </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="addTask-container-line">
-                        <div class="addTask-container-headlines">
-                            <div class="addTask-container-headlines-fields">TASK COLOUR</div>
-                            <div class="addTask-container-headlines-fields"></div>
-                        </div>
-                        <div class="addTask-container-edit">
-                            <div class="addTask-container-edit-fields">
-                                <select class="addTask-dropdown" style="background-color: #ffffff;" id="addTaskColor" onchange="changeColorOfMenu()">
-                                    <option value="#efefef" class="addTask-color-none">None</option>
-                                    <option value="#dcffc2" class="addTask-color-green">Green</option>
-                                    <option value="#c3ddff" class="addTask-color-blue">Blue</option>
-                                    <option value="#ffccd6" class="addTask-color-red">Red</option>
-                                    <option value="#ffffe0" class="addTask-color-yellow">Yellow</option>
-                                    <option value="#e2d2f2" class="addTask-color-purple">Purple</option>
-                                    <option value="#ffd089" class="addTask-color-orange">Orange</option>
-                                </select>
+                        <div class="addTask-container-line">
+                            <div class="addTask-container-headlines">
+                                <div class="addTask-container-headlines-fields">TASK COLOUR</div>
+                                <div class="addTask-container-headlines-fields"></div>
                             </div>
-                            <div class="addTask-container-edit-assignedTo-buttons">
-                                <div class="addTask-cancel">CANCEL</div>
-                                <div class="addTask-create" onclick="addTaskCreate()">CREATE TASK</div>
+                            <div class="addTask-container-edit">
+                                <div class="addTask-container-edit-fields">
+                                    <select class="addTask-dropdown" style="background-color: #ffffff;"
+                                        id="addTaskColor" onchange="changeColorOfMenu()">
+                                        <option value="#efefef" class="addTask-color-none">None</option>
+                                        <option value="#dcffc2" class="addTask-color-green">Green</option>
+                                        <option value="#c3ddff" class="addTask-color-blue">Blue</option>
+                                        <option value="#ffccd6" class="addTask-color-red">Red</option>
+                                        <option value="#ffffe0" class="addTask-color-yellow">Yellow</option>
+                                        <option value="#e2d2f2" class="addTask-color-purple">Purple</option>
+                                        <option value="#ffd089" class="addTask-color-orange">Orange</option>
+                                    </select>
+                                </div>
+                                <div class="addTask-container-edit-assignedTo-buttons">
+                                    <div class="addTask-cancel">CANCEL</div>
+                                    <div class="addTask-create" onclick="addTaskCreate()">CREATE TASK</div>
+                                </div>
                             </div>
                         </div>
                     </div>

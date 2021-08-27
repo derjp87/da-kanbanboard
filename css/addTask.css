@@ -1,5 +1,4 @@
 .addTask-main {
-    width: 100%;
     margin: 10px;
 }
 
@@ -11,7 +10,6 @@
 
 .addTask-container {
     width: 100%;
-    min-height: 400px;
     background-color: #efefef;
     border: 1px solid rgba(128, 128, 128, 0.349);
 }

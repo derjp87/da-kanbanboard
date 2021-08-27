@@ -10,7 +10,6 @@ body {
 .header {
     width: 100%;
     margin-top: 0px;
-    margin-bottom: 50px;
 }
 
 .logo {
@@ -21,14 +20,16 @@ body {
 }
 
 .logo-img {
+    margin-top: 30px;
     height: 50px;
 }
 
 .main {
-    width: 95%;
+    width: 98%;
     border-radius: 10px;
     background-color: #efefef;
-    min-height: 700px;
+    min-height: 90%;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     box-shadow: 0 0 10px 10px rgb(0 0 0 / 0.2);
@@ -37,10 +38,15 @@ body {
 .main-content {
     width: 100%;
     min-height: 100%;
-    border: 1px solid rgba(128, 128, 128, 0.781);
     border-radius: 3px;
-    margin: 40px;
+    margin: 20px;
+    margin-top: 0;
     background-color: #ffffff;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+}
+
+.main-content-border {
+    border: 1px solid rgba(128, 128, 128, 0.781);
 }
