@@ -33,7 +33,15 @@
     border: 1px solid rgba(128, 128, 128, 0.349);
     border-radius: 5px;
     margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 14px;
     padding: 5px;
     cursor: pointer;
+}
+
+.board-delete-task-icon {
+    width: 14px;
+    height: 14px;
 }
