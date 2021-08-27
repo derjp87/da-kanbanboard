@@ -41,7 +41,7 @@ async function renderBacklog() {
               </div>
           </div>
           <div id="backlog-category" class="category">${allBackLogs[i]['category']}</div>
-          <div id="backlog-details" class="details"></div>
+          <div id="backlog-details" class="details">${allBackLogs[i]['description']}</div>
         </div>
         `;
     }  

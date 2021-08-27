@@ -3,28 +3,22 @@ body {
     font-family: PT Sans;
 }
 
-
-   .main-content {
-  flex-direction: column;
-} 
+.main-content {
+    flex-direction: column;
+}
 
 .backlog-main {
     margin: 10px;
-    background-color: #efefef;
-    border: 1px solid rgb(195, 193, 193);
     border-radius: 3px;
 }
 
-
- .headers {
+.headers {
     display: flex;
     justify-content: space-between;
     font-size: 16px;
     color: #2b7cbb;
     font-weight: 700;
-padding-top: 10px;
-
-
+    margin: 15px;
 }
 
 .backlog-header {
@@ -32,6 +26,7 @@ padding-top: 10px;
     margin-bottom: 15px;
     font-size: 20px;
 }
+
 .h1 {
     font-weight: 700;
     margin-bottom: 15px;
@@ -39,14 +34,12 @@ padding-top: 10px;
     margin: 10px;
 }
 
-
-
 .todo-container {
     height: 82px;
     margin: 5px;
-    background-color: #ffffff;
+    background-color: #efefef40;
     display: flex;
-    align-items: center;    
+    align-items: center;
     justify-content: space-between;
     border-radius: 8px;
     border: 1px solid rgba(128, 128, 128, 0.781);
@@ -59,7 +52,7 @@ padding-top: 10px;
 }
 
 .todo-container:hover {
-cursor: pointer;
+    cursor: pointer;
 }
 
 .assigned-to {
@@ -76,22 +69,21 @@ cursor: pointer;
 }
 
 .personal-img {
-height: 60px;
-width: 60px;
-border-radius: 50%;
-margin: 10px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin: 10px;
 }
 
 .personal-data {
-height: 100px;
-width: 200px;
-display: flex;
-flex-direction: column;
-justify-content: center;
+    height: 100px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .name {
-    margin-bottom: 10px;
     font-size: 18px;
     margin-left: 15px;
 }
@@ -118,8 +110,8 @@ justify-content: center;
     color: #2b7cbb;
 }
 
-.center {
+.headers_span {
     display: flex;
-    justify-content: center;
     align-items: center;
+    width: 33%;
 }
