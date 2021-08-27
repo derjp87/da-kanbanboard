@@ -62,10 +62,11 @@ function loadAllTasks() {
     }
 }
 
-function deleteTask(i) {
-    allTasks.splice(i, 1);
+function deleteTask(id) {
+    let index = allTasks.findIndex(t => t.id == id);
+    allTasks.splice(id, 1);
     loadAllTasks();
-    firebase.firestore().collection('tasks').doc(i).delete();
+    firebase.firestore().collection('tasks').doc(id).delete();
     
 }
 
