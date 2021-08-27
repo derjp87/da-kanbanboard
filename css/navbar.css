@@ -9,18 +9,29 @@
 .navbar-link {
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: 24px;
     margin-left: 10px;
     margin-right: 10px;
-    width: 100px;
+    width: 140px;
     border-radius: 5px;
     border: 1px solid rgba(202, 202, 202, 0.548);
-    background-color: #2b7cbb;
+    background-color: #fafafa;
     cursor: pointer;
 }
 
+.navbar-link:hover {
+    background-color: #2b7cbb;
+}
+
+.navbar-img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
 .navbar-header a {
-    color: white;
+    color: black;
     text-decoration: none;
     cursor: pointer;
 }
