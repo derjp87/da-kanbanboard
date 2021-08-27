@@ -30,6 +30,10 @@ async function loadTasks() {
          allTasks.push(task);
 
     });
+    loadAllTasks();
+}
+
+function loadAllTasks() {
     document.getElementById('boardToDo').innerHTML = '';
     document.getElementById('boardInProgress').innerHTML = '';
     document.getElementById('boardTesting').innerHTML = '';
@@ -40,7 +44,7 @@ async function loadTasks() {
 
         if (tasksStatus == 'todo') {
             document.getElementById('boardToDo').innerHTML += `
-            <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="tasksDetails(${i})">${allTasks[i]['title']}</div>`;
+            <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};"><div>${allTasks[i]['title']}</div><img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>`;
         } else {
             if (tasksStatus == 'inprogress') {
                 document.getElementById('boardInProgress').innerHTML += `
@@ -58,6 +62,13 @@ async function loadTasks() {
     }
 }
 
+function deleteTask(i) {
+    allTasks.splice(i, 1);
+    loadAllTasks();
+    firebase.firestore().collection('tasks').doc(i).delete();
+    
+}
+
 function startDragging(id) {
     currentDraggedElement = id;
 }
@@ -69,12 +80,6 @@ function allowDrop(event) {
 function moveTo(status) {
     let taskToMove = allTasks.find ( task => task.id == currentDraggedElement );
     taskToMove.status = status;
-    loadTasks();
+    loadAllTasks();
     firebase.firestore().collection('tasks').doc(currentDraggedElement).set(taskToMove);
-}
-
-
-
-function tasksDetails(i) {
-
 }
