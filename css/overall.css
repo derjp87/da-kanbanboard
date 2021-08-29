@@ -74,3 +74,7 @@ body {
 .footer-right {
     margin-left: 10px;
 }
+
+.d-none {
+    display: none!important;
+}
