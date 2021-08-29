@@ -44,7 +44,7 @@ function loadAllTasks() {
 
         if (tasksStatus == 'todo') {
             document.getElementById('boardToDo').innerHTML += `
-            <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails()"><div>${allTasks[i]['title']}</div><img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>`;
+            <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})"><div>${allTasks[i]['title']}</div><img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>`;
         } else {
             if (tasksStatus == 'inprogress') {
                 document.getElementById('boardInProgress').innerHTML += `
@@ -85,8 +85,35 @@ function moveTo(status) {
     firebase.firestore().collection('tasks').doc(currentDraggedElement).set(taskToMove);
 }
 
-function showDetails() {
+function showDetails(i) {
     document.getElementById('tasksDetails').classList.remove('d-none');
+    document.getElementById('tasksDetails').innerHTML = `
+    <div class="details-box" style="background-color: ${allTasks[i]['taskcolor']}";>
+    <div class="details-box-titel">${allTasks[i]['title']}</div>
+    <div class="details-box-line">
+        <div class="details-box-headline">Users:</div>
+        <div class="details-box-content">${allTasks[i]['assignedusers']}</div>
+    </div>
+    <div class="details-box-line">
+        <div class="details-box-headline">Due Date:</div>
+        <div class="details-box-content">${allTasks[i]['duedate']}</div>
+    </div>
+    <div class="details-box-line-double">
+        <div>
+            <div class="details-box-headline">Category:</div>
+            <div class="details-box-content">${allTasks[i]['category']}</div>
+        </div>
+        <div>
+            <div class="details-box-headline">Urgency:</div>
+            <div class="details-box-content">${allTasks[i]['urgency']}</div>                    
+        </div>
+    </div>
+    <div>
+        <div class="details-box-headline">Description:</div>
+        <div class="details-box-content">${allTasks[i]['description']}</div>
+    </div>
+</div>
+    `;
 }
 
 function closeDetails() {
