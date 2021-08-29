@@ -45,3 +45,18 @@
     width: 14px;
     height: 14px;
 }
+
+.board-tasks-details {
+    border: black;
+    position: absolute;
+    background-color: rgba(128, 128, 128, 0.644);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.d-none {
+    display: none!important;
+}

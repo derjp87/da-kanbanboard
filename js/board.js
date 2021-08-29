@@ -44,18 +44,18 @@ function loadAllTasks() {
 
         if (tasksStatus == 'todo') {
             document.getElementById('boardToDo').innerHTML += `
-            <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};"><div>${allTasks[i]['title']}</div><img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>`;
+            <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails()"><div>${allTasks[i]['title']}</div><img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>`;
         } else {
             if (tasksStatus == 'inprogress') {
                 document.getElementById('boardInProgress').innerHTML += `
-                <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};"><div>${allTasks[i]['title']}</div><img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>`;
+                <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails()"><div>${allTasks[i]['title']}</div><img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>`;
             } else {
                 if (tasksStatus == 'testing') {
                     document.getElementById('boardTesting').innerHTML += `
-                    <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};"><div>${allTasks[i]['title']}</div><img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>`;
+                    <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails()"><div>${allTasks[i]['title']}</div><img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>`;
                 } else {
                     document.getElementById('boardDone').innerHTML += `
-                    <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};"><div>${allTasks[i]['title']}</div><img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>`;
+                    <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails()"><div>${allTasks[i]['title']}</div><img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>`;
                 }
             }
         }
@@ -83,4 +83,12 @@ function moveTo(status) {
     taskToMove.status = status;
     loadAllTasks();
     firebase.firestore().collection('tasks').doc(currentDraggedElement).set(taskToMove);
+}
+
+function showDetails() {
+    document.getElementById('tasksDetails').classList.remove('d-none');
+}
+
+function closeDetails() {
+    document.getElementById('tasksDetails').classList.add('d-none');
 }
