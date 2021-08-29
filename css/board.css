@@ -58,17 +58,13 @@
     align-items: center;
 }
 
-.d-none {
-    display: none!important;
-}
-
 .details-box {
     border-radius: 5px;
     border: 1px solid rgb(126, 126, 126);
     box-shadow: 0 0 10px 10px rgb(0 0 0 / 0.2);
     background-color: #dcffc2;
     padding: 30px;
-    width: 30%;
+    width: 25%;
     color: rgb(68, 68, 68);
 }
 
