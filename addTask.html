@@ -31,10 +31,8 @@
             <div class="header" w3-include-html="templates/navbar.html"></div>
             <div class="main-content-border">
                 <div class="addTask-main">
-                    <div class="addTask-header">
-                        Add Task
-                    </div>
-                    <div class="addTask-container">
+
+                    <form action onsubmit="addTaskCreate(); return false;" class="addTask-container">
                         <div class="addTask-container-line">
                             <div class="addTask-container-headlines">
                                 <div class="addTask-container-headlines-fields">TITLE</div>
@@ -42,9 +40,9 @@
                             </div>
                             <div class="addTask-container-edit">
                                 <div class="addTask-container-edit-fields"><input type="text" class="addTask-input"
-                                        id="addTaskTitle"></div>
+                                        id="addTaskTitle" required></div>
                                 <div class="addTask-container-edit-fields"><input type="date" class="addTask-input"
-                                        id="addTaskDueDate"></div>
+                                        id="addTaskDueDate" required></div>
                             </div>
                         </div>
                         <div class="addTask-container-line">
@@ -76,18 +74,12 @@
                             </div>
                             <div class="addTask-container-edit">
                                 <div class="addTask-container-edit-fields"><textarea class="addTask-input-description"
-                                        id="addTaskDescription"></textarea></div>
+                                        id="addTaskDescription" required></textarea></div>
                                 <div class="addTask-container-edit-assignedTo">
                                     <div class="addTask-users">
-                                        <div class="addTask-assignedTo" id="addTaskAssignedTo">
-                                        </div>
-                                        <!--                                    <div class="addTask-addUser">
-                                        <img onclick="showUserList()" class="addTask-addUserImg" src="img/add.png"> 
-                                    </div>
-                                -->
-                                        <div onload="showUserList()" class="addTask-addUser-list" id="addTaskUserList">
-
-                                        </div>
+                                        <div class="addTask-assignedTo" id="addTaskAssignedTo" required></div>
+                                        
+                                        <div onload="showUserList()" class="addTask-addUser-list" id="addTaskUserList"></div>
                                     </div>
 
                                 </div>
@@ -113,7 +105,7 @@
                                 </div>
                                 <div class="addTask-container-edit-assignedTo-buttons">
                                     <div class="addTask-cancel">CANCEL</div>
-                                    <div class="addTask-create" onclick="addTaskCreate()">CREATE TASK</div>
+                                    <button class="addTask-create" type="submit">CREATE TASK</button>
                                 </div>
                             </div>
                         </div>
