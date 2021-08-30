@@ -1,10 +1,19 @@
 .help-main {
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.help-index-list {
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .help-containers {
     margin-top: 30px;
     padding: 8px;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,7 +35,6 @@
 }
 
 .help-containers-img {
-    min-width: 400px;
-    max-width: 1000px;
+    width: 100%;
     border-radius: 10px;
 }
