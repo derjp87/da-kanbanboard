@@ -13,7 +13,7 @@ function init() {
         } else {
             // No user is signed in.
             includeHTML();
-            setTimeout(document.getElementById('logoutButton').classList.add('d-none'), 3000);
+            setTimeout(() => document.getElementById('logoutButton').classList.add('d-none'), 10);
             
         }
     });

@@ -1,4 +1,3 @@
-
 function init() {
 
     firebase.auth().onAuthStateChanged(async function (user) {
@@ -14,12 +13,8 @@ function init() {
         } else {
             // No user is signed in.
             includeHTML();
-            setTimeout(hideLogout, 3000);
+            setTimeout(() => document.getElementById('logoutButton').classList.add('d-none'), 10);
             
         }
     });
-  }
-
-  function hideLogout() {
-    document.getElementById('logoutButton').classList.add('d-none')
   }
