@@ -79,7 +79,7 @@ body {
 
 .personal-data {
     height: 100px;
-    width: 200px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -101,7 +101,6 @@ body {
     max-width: 300px;
     min-width: 300px;
     overflow: auto;
-    font-size: 12px;
 }
 
 .no-entries {
