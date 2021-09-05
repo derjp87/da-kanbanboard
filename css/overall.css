@@ -78,3 +78,12 @@ body {
 .d-none {
     display: none!important;
 }
+
+@media(max-width:300px) {
+    .footer {
+        flex-direction: column;
+        margin-bottom: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+}

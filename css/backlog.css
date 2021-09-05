@@ -5,6 +5,7 @@ body {
 
 .main-content {
     flex-direction: column;
+    width: 97%;
 }
 
 .backlog-main {
@@ -20,8 +21,6 @@ body {
     font-weight: 700;
     margin: 15px;
 }
-
-
 
 .backlog-header {
     font-weight: 700;
@@ -42,7 +41,6 @@ body {
     background-color: #efefef40;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     border-radius: 8px;
     border: 1px solid rgba(128, 128, 128, 0.781);
 }
@@ -59,8 +57,8 @@ body {
 
 .assigned-to {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    width: 40%;
 }
 
 .category-color {
@@ -79,28 +77,26 @@ body {
 
 .personal-data {
     height: 100px;
-    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .name {
-    font-size: 18px;
     margin-left: 15px;
 }
 
 .category {
-    width: 100px;
+    width: 20%;
     display: flex;
     justify-content: center;
 }
 
 .details {
     max-height: 60px;
-    max-width: 300px;
-    min-width: 300px;
+    width: 38%;
     overflow: auto;
+    margin-right: 15px;
 }
 
 .no-entries {
@@ -115,4 +111,25 @@ body {
     display: flex;
     align-items: center;
     width: 33%;
+}
+
+@media(max-width:885px) {
+    .todo-container {
+        font-size: 14px;
+    }
+}
+
+@media(max-width:100px) {
+    .assigned-to {
+        width: 33%;
+        
+    }
+
+    .category {
+        width: 33%;
+    }
+
+    .details {
+        width: 33%;
+    }
 }
