@@ -9,6 +9,7 @@ function init() {
             // No user is signed in.
             //The start method will wait until the Dom is loaded.
             ui.start('#firebaseui-auth-container', uiConfig);
+            setTimeout(() => document.getElementById('anonymous').classList.add('d-none'), 3000);
         }
     });
 

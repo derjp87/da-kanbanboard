@@ -18,3 +18,7 @@
     align-items: center;
     text-align: center;
 }
+
+.firebaseui-card-footer {
+    display: none;
+}
