@@ -1,3 +1,17 @@
 .policy-main {
     padding: 20px;
 }
+
+p {
+    overflow: auto;
+}
+
+li {
+    overflow: auto;
+}
+
+@media(max-width:400px) {
+    .responsive_h1 {
+        font-size: 1.6em;
+    }
+}
