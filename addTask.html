@@ -34,15 +34,13 @@
 
                     <form action onsubmit="addTaskCreate(); return false;" class="addTask-container">
                         <div class="addTask-container-line">
-                            <div class="addTask-container-headlines">
-                                <div class="addTask-container-headlines-fields">TITLE</div>
-                                <div class="addTask-container-headlines-fields">DUE DATE</div>
-                            </div>
-                            <div class="addTask-container-edit">
-                                <div class="addTask-container-edit-fields"><input type="text" class="addTask-input"
-                                        id="addTaskTitle" required></div>
-                                <div class="addTask-container-edit-fields"><input type="date" class="addTask-input"
-                                        id="addTaskDueDate" required></div>
+                            <div class="addTask-container-edit addTask-container-edit-responsive">
+                                <div class="addTask-container-edit-fields addTask-responsive-width">
+                                    <div class="addTask-container-headlines-fields addTask-headlines-responsive addTask-headlines-margin">TITLE</div>
+                                    <input type="text" class="addTask-input addTask-input-responsive" id="addTaskTitle" required></div>
+                                <div class="addTask-container-edit-fields addTask-responsive-width">
+                                    <div class="addTask-container-headlines-fields addTask-headlines-responsive addTask-headlines-margin">DUE DATE</div>
+                                    <input type="date" class="addTask-input addTask-date-width addTask-date-width-responsive" id="addTaskDueDate" required></div>
                             </div>
                         </div>
                         <div class="addTask-container-line">
@@ -52,14 +50,14 @@
                             </div>
                             <div class="addTask-container-edit">
                                 <div class="addTask-container-edit-fields">
-                                    <select class="addTask-dropdown" id="addTaskCategory">
+                                    <select class="addTask-dropdown addTask-dropdown-responsive" id="addTaskCategory">
                                         <option value="Management">Management</option>
                                         <option value="Product">Product</option>
                                         <option value="Sale">Sale</option>
                                     </select>
                                 </div>
                                 <div class="addTask-container-edit-fields">
-                                    <select class="addTask-dropdown" id="addTaskUrgency">
+                                    <select class="addTask-dropdown addTask-dropdown-responsive" id="addTaskUrgency">
                                         <option value="High">High</option>
                                         <option value="Middle">Middle</option>
                                         <option value="Low">Low</option>
@@ -68,14 +66,12 @@
                             </div>
                         </div>
                         <div class="addTask-container-line">
-                            <div class="addTask-container-headlines">
-                                <div class="addTask-container-headlines-fields">DESCRIPTION</div>
-                                <div class="addTask-container-headlines-fields">ASSIGNED TO</div>
-                            </div>
-                            <div class="addTask-container-edit">
-                                <div class="addTask-container-edit-fields"><textarea class="addTask-input-description"
-                                        id="addTaskDescription" required></textarea></div>
-                                <div class="addTask-container-edit-assignedTo">
+                            <div class="addTask-container-edit addTask-container-edit-responsive">
+                                <div class="addTask-container-edit-fields addTask-container-edit-fields-responsive">
+                                    <div class="addTask-container-headlines-fields addTask-headlines-margin">DESCRIPTION</div>
+                                    <textarea class="addTask-input-description" id="addTaskDescription" required></textarea></div>
+                                <div class="addTask-container-edit-assignedTo addTask-container-edit-fields-responsive">
+                                    <div class="addTask-container-headlines-fields addTask-assigned-to-headline addTask-headlines-margin">ASSIGNED TO</div>
                                     <div class="addTask-users">
                                         <div class="addTask-assignedTo" id="addTaskAssignedTo" required></div>
                                         
@@ -90,9 +86,9 @@
                                 <div class="addTask-container-headlines-fields">TASK COLOUR</div>
                                 <div class="addTask-container-headlines-fields"></div>
                             </div>
-                            <div class="addTask-container-edit">
-                                <div class="addTask-container-edit-fields">
-                                    <select class="addTask-dropdown" style="background-color: #ffffff;"
+                            <div class="addTask-container-edit addTask-container-edit-responsive">
+                                <div class="addTask-container-edit-fields addTask-container-edit-fields-responsive">
+                                    <select class="addTask-dropdown addTask-dropdown-color-respnsive" style="background-color: #ffffff;"
                                         id="addTaskColor" onchange="changeColorOfMenu()">
                                         <option value="#efefef" class="addTask-color-none">None</option>
                                         <option value="#dcffc2" class="addTask-color-green">Green</option>
@@ -103,7 +99,7 @@
                                         <option value="#ffd089" class="addTask-color-orange">Orange</option>
                                     </select>
                                 </div>
-                                <div class="addTask-container-edit-assignedTo-buttons">
+                                <div class="addTask-container-edit-assignedTo-buttons addTask-container-edit-fields-responsive">
                                     <div class="addTask-cancel">CANCEL</div>
                                     <button class="addTask-create" type="submit">CREATE TASK</button>
                                 </div>

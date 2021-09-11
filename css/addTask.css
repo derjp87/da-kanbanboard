@@ -27,13 +27,23 @@
     justify-content: space-between;
 }
 
-.addTask-container-headlines-fields{
+.addTask-headlines-margin {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.addTask-container-headlines-fields {
     display: flex;
     justify-content: space-between;
     width: 45%;
     font-size: 16px;
     color: #2b7cbb;
     font-weight: 700;
+}
+
+.addTask-assigned-to-headline {
+    margin-bottom:  9px !important;
+    width: 100%;
 }
 
 .addTask-container-edit {
@@ -50,8 +60,6 @@
 .addTask-container-edit-assignedTo {
     width: 45%;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     flex-direction: column;
 }
 
@@ -63,8 +71,12 @@
     border: 1px solid rgba(128, 128, 128, 0.699);
 }
 
+.addTask-date-width {
+    width: 95.5%;
+}
+
 .addTask-dropdown {
-    width: 97%;
+    width: 96.25%;
     height: 50px;
     font-family: PT Sans;
     outline: none;
@@ -85,12 +97,12 @@
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
-    width: 97%;
-    height: 100%;
+    width: 96.1%;
+    min-height: 148px;
 }
 
 .addTask-addUser {
-    border:  1px solid rgba(128, 128, 128, 0.349);
+    border: 1px solid rgba(128, 128, 128, 0.349);
     margin-bottom: 3px;
     padding-left: 3px;
     cursor: pointer;
@@ -102,7 +114,7 @@
 }
 
 .addTask-removeUser {
-    border:  1px solid rgba(128, 128, 128, 0.349);
+    border: 1px solid rgba(128, 128, 128, 0.349);
     margin-bottom: 3px;
     padding-left: 3px;
     cursor: pointer;
@@ -118,6 +130,7 @@
     width: 40%;
     border: 1px solid rgba(128, 128, 128, 0.699);
     padding: 3px;
+    min-height: 175px;
     height: 100%;
 }
 
@@ -126,8 +139,10 @@
     width: 40%;
     border: 1px solid rgba(128, 128, 128, 0.699);
     padding: 3px;
+    min-height: 175px;
     height: 100%;
 }
+
 .addTask-container-edit-assignedTo-buttons {
     display: flex;
     justify-content: flex-end;
@@ -195,4 +210,48 @@
 .addTask-color-orange {
     background-color: #ffd089;
     font-weight: 700;
+}
+
+@media(max-width:600px) {
+    .addTask-container-edit-responsive {
+        flex-direction: column;
+    }
+    .addTask-container-edit-fields-responsive {
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    .addTask-responsive-width {
+        width: 100%;
+    }
+
+    .addTask-headlines-responsive {
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+
+    .addTask-dropdown-responsive {
+        width: 98.5%;
+    }
+
+    .addTask-input-responsive {
+        width: 98.5%;
+    }
+
+    .addTask-date-width-responsive {
+        width: 99%;
+    }
+
+    .addTask-input-description {
+        width: 98%;
+    }
+
+    .addTask-users {
+        width: 99.1%;
+    }
+
+    .addTask-dropdown-color-respnsive {
+        width: 99.1%;
+    }
 }
