@@ -26,3 +26,11 @@
 .mdl-shadow--2dp {
     box-shadow: none !important;
 }
+
+.firebaseui-idp-button {
+    background-color: #2b7cbb !important;
+}
+
+h1 {
+    text-align: center;
+}
