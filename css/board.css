@@ -39,6 +39,7 @@
     font-size: 14px;
     padding: 5px;
     cursor: pointer;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
 .board-delete-task-icon {
@@ -49,7 +50,7 @@
 
 .board-tasks-details {
     border: black;
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.651);
     width: 100vw;
     height: 100vh;
@@ -68,12 +69,17 @@
     color: rgb(68, 68, 68);
 }
 
+.details-box-content {
+    overflow: auto;
+}
+
 .details-box-titel {
     border-bottom: 1px solid grey;
     font-weight: 700;
     font-size: 24px;
     color: black;
     margin-bottom: 10px;
+    overflow: auto;
 }
 
 .details-box-line {
@@ -97,6 +103,24 @@
     justify-content: flex-end;
     align-items: center;
     color: red;
+    margin-top: 15px;
+}
+
+@media(max-width:1153px) {
+    .details-box {
+        width: 350px;
+    }
+    .details-box-line-double {
+        flex-direction: column;
+    }
+    .details-box-urgency {
+        margin-top: 10px;
+    }
+    .details-box-content-overflow {
+        overflow: auto;
+        max-height: 100px;
+        max-width: 215px;
+    }
 }
 
 @media(max-width:445px) {
@@ -119,11 +143,15 @@
     }
 }
 
+
 @media(max-width:300px) {
     .footer {
         flex-direction: column;
         margin-bottom: 20px;
         justify-content: center;
         align-items: center;
+    }
+    .details-box {
+        width: 100%;
     }
 }

@@ -22,3 +22,7 @@
 .firebaseui-card-footer {
     display: none;
 }
+
+.mdl-shadow--2dp {
+    box-shadow: none !important;
+}

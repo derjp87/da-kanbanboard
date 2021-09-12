@@ -92,7 +92,7 @@ function showDetails(i) {
     <div class="details-box-titel">${allTasks[i]['title']}</div>
     <div class="details-box-line">
         <div class="details-box-headline">Users:</div>
-        <div class="details-box-content">${allTasks[i]['assignedusers']}</div>
+        <div class="details-box-content details-box-content-overflow">${allTasks[i]['assignedusers']}</div>
     </div>
     <div class="details-box-line">
         <div class="details-box-headline">Due Date:</div>
@@ -103,14 +103,14 @@ function showDetails(i) {
             <div class="details-box-headline">Category:</div>
             <div class="details-box-content">${allTasks[i]['category']}</div>
         </div>
-        <div>
+        <div class="details-box-urgency">
             <div class="details-box-headline">Urgency:</div>
             <div class="details-box-content">${allTasks[i]['urgency']}</div>                    
         </div>
     </div>
     <div>
         <div class="details-box-headline">Description:</div>
-        <div class="details-box-content">${allTasks[i]['description']}</div>
+        <div class="details-box-content details-box-content-overflow">${allTasks[i]['description']}</div>
     </div>
     <div class="detail-box-delete">delete<img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>
 </div>
