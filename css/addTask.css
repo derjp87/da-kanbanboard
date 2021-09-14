@@ -134,6 +134,10 @@
     height: 100%;
 }
 
+.addTask-assignedToDiv {
+    height: 100%;
+}
+
 .addTask-addUser-list {
     background-color: white;
     width: 40%;

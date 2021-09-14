@@ -4,14 +4,8 @@ function init() {
         if (user) {
             // User is signed in.
             includeHTML();
-            //loadTasks();
             showUserList();
-            //initNavBar(user);
-            //setDateMinToday();
-            //setTasks(user.uid);
-            //setUsers();
         } else {
-            // No user is signed in.
             window.location.assign("index.html");
         }
     });
@@ -53,15 +47,20 @@ function addTaskAddUser(i) {
 
 function addTaskRemoveUser(i) {
 
-        assignedUsers.splice(i, 1);
-        document.getElementById('addTaskAssignedTo').innerHTML = '';
+    assignedUsers.splice(i, 1);
+    document.getElementById('addTaskAssignedTo').innerHTML = '';
 
-        for (let i = 0; i < assignedUsers.length; i++) {
-            document.getElementById('addTaskAssignedTo').innerHTML += `
-            <div class="addTask-removeUser" onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
-        }
+    for (let i = 0; i < assignedUsers.length; i++) {
+        document.getElementById('addTaskAssignedTo').innerHTML += `
+        <div class="addTask-removeUser" onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
     }
+}
 
+function addTaskCreateCheck() {
+    if (assignedUsers.length > 0) {
+        document.getElementById('addTask-assignedTo-required').required = false;
+    } 
+}
 
 function addTaskCreate() {
     let title = document.getElementById('addTaskTitle').value;
@@ -76,41 +75,25 @@ function addTaskCreate() {
 
     var db = firebase.firestore();
 
-    if (title.length == 0) {
-        alert('Please enter a title!');
-    } else {
-        if (description.length == 0) {
-            alert('Please enter a description!');
-        } else {
-            if (date.length == 0) {
-                alert('Please enter a due date!');
-            } else {
-                if (assignedUsers.length == 0) {
-                    alert('Please assign user!')
-                } else {
-                db.collection('tasks').add({
-                    title: title,
-                    duedate: date,
-                    category: category,
-                    urgency: urgency,
-                    description: description,
-                    assignedusers: users,
-                    status: 'todo',
-                    taskcolor: color,
-                })
-                    .then((docRef) => {
-                        console.log("Document written with ID: ", docRef.id);
-                        window.location.assign("board.html");
+    db.collection('tasks').add({
+        title: title,
+        duedate: date,
+        category: category,
+        urgency: urgency,
+        description: description,
+        assignedusers: users,
+        status: 'todo',
+        taskcolor: color,
+        })
+        .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+        window.location.assign("board.html");
 
-                    })
-                    .catch((error) => {
-                        console.error("Error adding document: ", error);
+        })
+        .catch((error) => {
+        console.error("Error adding document: ", error);
 
-                    });
-                }
-            }
-        }
-    }
+        });
 }
 
 function changeColorOfMenu() {

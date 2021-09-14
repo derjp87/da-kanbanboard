@@ -73,7 +73,10 @@
                                 <div class="addTask-container-edit-assignedTo addTask-container-edit-fields-responsive">
                                     <div class="addTask-container-headlines-fields addTask-assigned-to-headline addTask-headlines-margin">ASSIGNED TO</div>
                                     <div class="addTask-users">
-                                        <div class="addTask-assignedTo" id="addTaskAssignedTo" required></div>
+                                        <div class="addTask-assignedTo">
+                                            <div class="addTask-assignedToDiv" id="addTaskAssignedTo"></div>
+                                            <input type="text" style="opacity: 0" id="addTask-assignedTo-required" required>
+                                        </div>
                                         
                                         <div onload="showUserList()" class="addTask-addUser-list" id="addTaskUserList"></div>
                                     </div>
@@ -101,7 +104,7 @@
                                 </div>
                                 <div class="addTask-container-edit-assignedTo-buttons addTask-container-edit-fields-responsive">
                                     <div class="addTask-cancel">CANCEL</div>
-                                    <button class="addTask-create" type="submit">CREATE TASK</button>
+                                    <button class="addTask-create" onclick="addTaskCreateCheck()" type="submit">CREATE TASK</button>
                                 </div>
                             </div>
                         </div>
