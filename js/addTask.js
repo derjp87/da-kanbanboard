@@ -1,5 +1,4 @@
 function init() {
-
     firebase.auth().onAuthStateChanged(async function (user) {
         if (user) {
             // User is signed in.
@@ -23,16 +22,13 @@ async function showUserList() {
         userList.push(i.data());
     });
     document.getElementById('addTaskUserList').innerHTML = '';
-
     for (let i = 0; i < userList.length; i++) {
-
         document.getElementById('addTaskUserList').innerHTML += `
         <div class="addTask-addUser" onclick="addTaskAddUser(${i})">${userList[i]['displayName']}</div>`;
     }
 }
 
 function addTaskAddUser(i) {
-
     if (!assignedUsers.includes(userList[i]['displayName'])) {
         assignedUsers.push(userList[i]['displayName']);
         document.getElementById('addTaskAssignedTo').innerHTML = '';
@@ -42,14 +38,11 @@ function addTaskAddUser(i) {
             <div class="addTask-removeUser" onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
         }
     }
-
 }
 
 function addTaskRemoveUser(i) {
-
     assignedUsers.splice(i, 1);
     document.getElementById('addTaskAssignedTo').innerHTML = '';
-
     for (let i = 0; i < assignedUsers.length; i++) {
         document.getElementById('addTaskAssignedTo').innerHTML += `
         <div class="addTask-removeUser" onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
@@ -63,36 +56,19 @@ function addTaskCreateCheck() {
 }
 
 function addTaskCreate() {
-    let title = document.getElementById('addTaskTitle').value;
-    let date = document.getElementById('addTaskDueDate').value;
-    let category = document.getElementById('addTaskCategory').value;
-    let urgency = document.getElementById('addTaskUrgency').value;
-    let description = document.getElementById('addTaskDescription').value;
-    let color = document.getElementById('addTaskColor').value;
-    users = assignedUsers;
-    title = title.trim();
-    description = description.trim();  //trim löscht die leerzeichen am anfang und am ende eines textes
-
     var db = firebase.firestore();
-
     db.collection('tasks').add({
-        title: title,
-        duedate: date,
-        category: category,
-        urgency: urgency,
-        description: description,
-        assignedusers: users,
+        title: document.getElementById('addTaskTitle').value.trim(),
+        duedate: document.getElementById('addTaskDueDate').value,
+        category: document.getElementById('addTaskCategory').value,
+        urgency: document.getElementById('addTaskUrgency').value,
+        description: document.getElementById('addTaskDescription').value.trim(),
+        assignedusers: assignedUsers,
         status: 'todo',
-        taskcolor: color,
+        taskcolor: document.getElementById('addTaskColor').value,
         })
         .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
         window.location.assign("board.html");
-
-        })
-        .catch((error) => {
-        console.error("Error adding document: ", error);
-
         });
 }
 
