@@ -91,12 +91,6 @@
     color: black;
 }
 
-.details-box-line-double {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
 .detail-box-delete {
     width: 100%;
     display: flex;
@@ -109,9 +103,6 @@
 @media(max-width:1153px) {
     .details-box {
         width: 350px;
-    }
-    .details-box-line-double {
-        flex-direction: column;
     }
     .details-box-urgency {
         margin-top: 10px;

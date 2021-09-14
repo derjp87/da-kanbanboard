@@ -118,7 +118,8 @@ function showDetails(i) {
     showDetailsTitle(i);
     showDetailsAssignedUsers(i);
     showDetailsDueDate(i);
-    showsDetailsCategoryUrgency(i);
+    showDetailsCategory(i);
+    showDetailsUrgency(i);
     showDetailsDescription(i);
     showDetailsDelete(i)
 }
@@ -149,19 +150,22 @@ function showDetailsDueDate(i) {
     `; 
 }
 
-function showsDetailsCategoryUrgency(i) {
+function showDetailsCategory(i) {
     document.getElementById('details-box').innerHTML += `
-        <div class="details-box-line-double">
-            <div>
-                <div class="details-box-headline">Category:</div>
-                <div class="details-box-content">${allTasks[i]['category']}</div>
-            </div>
-            <div class="details-box-urgency">
-                <div class="details-box-headline">Urgency:</div>
-                <div class="details-box-content">${allTasks[i]['urgency']}</div>                    
-            </div>
+        <div class="details-box-line">
+            <div class="details-box-headline">Category:</div>
+            <div class="details-box-content">${allTasks[i]['category']}</div>
         </div>
     `; 
+}
+
+function showDetailsUrgency(i) {
+    document.getElementById('details-box').innerHTML += `
+        <div class="details-box-line">
+            <div class="details-box-headline">Urgency:</div>
+            <div class="details-box-content">${allTasks[i]['urgency']}</div>                    
+        </div>
+`; 
 }
 
 function showDetailsDescription(i) {
