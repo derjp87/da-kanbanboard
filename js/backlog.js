@@ -29,7 +29,7 @@ function showBacklog() {
     document.getElementById('mainContent').innerHTML = ``;
     for (let i = 0; i < allBackLogs.length; i++) {
       loadBacklogs(i);
-  }
+    }
   } else {
     backlogContainer.innerHTML = `<div class="todo-container no-entries">"Keine Einträge vorhanden..."</div>`;
   }
