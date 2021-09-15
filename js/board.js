@@ -136,7 +136,7 @@ function showDetailsAssignedUsers(i) {
     document.getElementById('details-box').innerHTML += `
         <div class="details-box-line">
             <div class="details-box-headline">Users:</div>
-            <div class="details-box-content details-box-content-overflow">${allTasks[i]['assignedusers']}</div>
+            <div class="details-box-content details-box-content-overflow">${allTasks[i]['assignedusers'].join(", ")}</div>
         </div>
     `;
 }

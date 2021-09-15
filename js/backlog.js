@@ -41,7 +41,7 @@ function loadBacklogs(i) {
     <div class="assigned-to">
       <div id="backlog-color" class="category-color" style="background-color: ${allBackLogs[i]['taskcolor']};"></div>
         <div class="personal-data">
-          <span id="backlog-name" class="name">${allBackLogs[i]['assignedusers']}</span>
+          <span id="backlog-name" class="name">${allBackLogs[i]['assignedusers'].join(", ")}</span>
             <a id="backlog-email" href="#"></a>
         </div>
     </div>
