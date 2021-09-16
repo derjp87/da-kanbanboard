@@ -3,22 +3,15 @@ function init() {
         if (user) {
             // User is signed in.
             includeHTML();
-//*                 nameanonymous();
             showUserList();
         } else {
             window.location.assign("index.html");
         }
     });
-  }
+}
 
 let userList = [];
 let assignedUsers = [];
-
-//*     function nameanonymous() {
-//*         if (firebase.auth().currentUser.isAnonymous) {
-//*             firebase.auth().currentUser.updateProfile({displayName: 'Testerle'});
-//*         }
-//*     }
 
 async function showUserList() {
     userList = [];
@@ -30,8 +23,10 @@ async function showUserList() {
     });
     document.getElementById('addTaskUserList').innerHTML = '';
     for (let i = 0; i < userList.length; i++) {
-        document.getElementById('addTaskUserList').innerHTML += `
+        if (JSON.stringify(userList[i]['displayName']) !== "null") {
+            document.getElementById('addTaskUserList').innerHTML += `
         <div class="addTask-addUser" onclick="addTaskAddUser(${i})">${userList[i]['displayName']}</div>`;
+        }
     }
 }
 
@@ -59,7 +54,7 @@ function addTaskRemoveUser(i) {
 function addTaskCreateCheck() {
     if (assignedUsers.length > 0) {
         document.getElementById('addTask-assignedTo-required').required = false;
-    } 
+    }
 }
 
 function addTaskCreate() {
@@ -73,9 +68,9 @@ function addTaskCreate() {
         assignedusers: assignedUsers,
         status: 'todo',
         taskcolor: document.getElementById('addTaskColor').value,
-        })
+    })
         .then((docRef) => {
-        window.location.assign("board.html");
+            window.location.assign("board.html");
         });
 }
 
