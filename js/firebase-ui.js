@@ -19,6 +19,11 @@ var uiConfig = {
           if(authResult.additionalUserInfo.isNewUser) {
             console.log("new user");
             setProfile(authResult.user);
+
+       //*       if (authResult.user.isAnonymous) { 
+       //*       firebase.authResult.user.updateProfile({displayName: 'Testerle'});
+       //*     } 
+
             setTimeout(function(){window.location.assign("board.html")}, 1000);
             
           }else{

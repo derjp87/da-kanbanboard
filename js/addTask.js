@@ -3,6 +3,7 @@ function init() {
         if (user) {
             // User is signed in.
             includeHTML();
+//*                 nameanonymous();
             showUserList();
         } else {
             window.location.assign("index.html");
@@ -12,6 +13,12 @@ function init() {
 
 let userList = [];
 let assignedUsers = [];
+
+//*     function nameanonymous() {
+//*         if (firebase.auth().currentUser.isAnonymous) {
+//*             firebase.auth().currentUser.updateProfile({displayName: 'Testerle'});
+//*         }
+//*     }
 
 async function showUserList() {
     userList = [];
