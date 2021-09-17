@@ -5,7 +5,7 @@ function init() {
             includeHTML();
             showUserList();
         } else {
-            window.location.assign("index.html");
+            window.location.assign("index.html"); //if no user is signed in assign to index.
         }
     });
 }
@@ -17,38 +17,42 @@ async function showUserList() {
     userList = [];
     let users = firebase.firestore().collection('users');
     let response = await users.get();
+    //load user data from firestore server.
     response.forEach((i) => {
         console.log(i.data());
         userList.push(i.data());
     });
+    //push user data into userList array + log data into console.
     document.getElementById('addTaskUserList').innerHTML = '';
     for (let i = 0; i < userList.length; i++) {
         if (JSON.stringify(userList[i]['displayName']) !== "null") {
             document.getElementById('addTaskUserList').innerHTML += `
         <div class="addTask-addUser" onclick="addTaskAddUser(${i})">${userList[i]['displayName']}</div>`;
         }
-    }
+    } //display selectable userlist at addTask - except for anonymous user "null".
 }
 
 function addTaskAddUser(i) {
     if (!assignedUsers.includes(userList[i]['displayName'])) {
         assignedUsers.push(userList[i]['displayName']);
+        //if selected user from displayed userList is not included as assignedUsers, push data into assignedUsers array.
         document.getElementById('addTaskAssignedTo').innerHTML = '';
 
         for (let i = 0; i < assignedUsers.length; i++) {
             document.getElementById('addTaskAssignedTo').innerHTML += `
             <div class="addTask-removeUser" onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
-        }
+        } //display assigned users from assignedUsers array.
     }
 }
 
 function addTaskRemoveUser(i) {
     assignedUsers.splice(i, 1);
+    // remove selected assigned-user from assignedUsers array.
     document.getElementById('addTaskAssignedTo').innerHTML = '';
     for (let i = 0; i < assignedUsers.length; i++) {
         document.getElementById('addTaskAssignedTo').innerHTML += `
         <div class="addTask-removeUser" onclick="addTaskRemoveUser(${i})">${assignedUsers[i]}</div>`;
-    }
+    } //clear and display updated assigned users.
 }
 
 function addTaskCreateCheck() {
@@ -68,13 +72,14 @@ function addTaskCreate() {
         assignedusers: assignedUsers,
         status: 'todo',
         taskcolor: document.getElementById('addTaskColor').value,
-    })
+    }) //push input data.value of addTask-inputfields into collection 'tasks' at firestore server.
         .then((docRef) => {
             window.location.assign("board.html");
-        });
+        }); //assign user after submit to board.html.
 }
 
 function changeColorOfMenu() {
     let mymenu = document.getElementById('addTaskColor');
     mymenu.style = `background-color: ${mymenu.value};`;
+    // change shown addTaskColor-field to selected option-color.
 }
