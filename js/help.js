@@ -4,7 +4,7 @@ function init() {
         if (user) {
             // User is signed in.
             includeHTML();
-        } else {
+        } else { // No user is signed in.
             window.location.assign("index.html");
         }
     });
