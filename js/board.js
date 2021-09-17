@@ -1,10 +1,10 @@
 function init() {
 
     firebase.auth().onAuthStateChanged(async function (user) {
-        if (user) {
+        if (user) {  // User is signed in.
             includeHTML();
             loadTasks();
-        } else {
+        } else {  // No user is signed in.
             window.location.assign("index.html");
         }
     });
@@ -15,12 +15,12 @@ let allTasks = [];
 async function loadTasks() {
     allTasks = [];
     let tasks = firebase.firestore().collection('tasks');
-    let response = await tasks.get();
+    let response = await tasks.get(); //load tasks data from firestore server.
     response.forEach((i) => {
-        console.log(i.data(), i.id);
-        let task = i.data();
-        task.id = i.id;
-        allTasks.push(task);
+        console.log(i.data(), i.id);  // log dataset and id forEach stored task into console.
+        let task = i.data();  // assign each dataset to an individual task. 
+        task.id = i.id;  // assign each id to the individual task.
+        allTasks.push(task); //push individual task into allTasks-Array.
 
     });
     loadAllTasks();
@@ -49,7 +49,7 @@ function loadTasksToDo() {
     for (let i = 0; i < allTasks.length; i++) {
         let tasksStatus = allTasks[i]['status'];
 
-        if (tasksStatus == 'todo') {
+        if (tasksStatus == 'todo') { //check if an individual tasksStatus from allTasks equals 'todo'. If true continue to display individual task from allTasks as structured below into 'boardToDo'-section. 
             document.getElementById('boardToDo').innerHTML += `
             <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})"><div>${allTasks[i]['title']}</div></div>`;
         }
@@ -60,7 +60,7 @@ function loadTasksInProgress() {
     for (let i = 0; i < allTasks.length; i++) {
         let tasksStatus = allTasks[i]['status'];
 
-        if (tasksStatus == 'inprogress') {
+        if (tasksStatus == 'inprogress') { //check if an individual tasksStatus from allTasks equals 'inprogress'. If true continue to display individual task from allTasks as structured below into 'boardInProgress'-section.
             document.getElementById('boardInProgress').innerHTML += `
             <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})"><div>${allTasks[i]['title']}</div></div>`;
         }
@@ -71,7 +71,7 @@ function loadTasksTesting() {
     for (let i = 0; i < allTasks.length; i++) {
         let tasksStatus = allTasks[i]['status'];
 
-        if (tasksStatus == 'testing') {
+        if (tasksStatus == 'testing') { //check if an individual tasksStatus from allTasks equals 'testing'. If true continue to display individual task from allTasks as structured below into 'boardTesting'-section.
             document.getElementById('boardTesting').innerHTML += `
             <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})"><div>${allTasks[i]['title']}</div></div>`;
         }
@@ -82,7 +82,7 @@ function loadTasksDone() {
     for (let i = 0; i < allTasks.length; i++) {
         let tasksStatus = allTasks[i]['status'];
 
-        if (tasksStatus == 'done') {
+        if (tasksStatus == 'done') { //check if an individual tasksStatus from allTasks equals 'done'. If true continue to display individual task from allTasks as structured below into 'boardDone'-section.
             document.getElementById('boardDone').innerHTML += `
             <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})"><div>${allTasks[i]['title']}</div></div>`;
         }
@@ -90,7 +90,7 @@ function loadTasksDone() {
 }
 
 function deleteTask(id) {
-    let index = allTasks.findIndex(t => t.id == id);
+    let index = allTasks.findIndex(t => t.id == id); 
     allTasks.splice(index, 1);
     loadAllTasks();
     firebase.firestore().collection('tasks').doc(id).delete();

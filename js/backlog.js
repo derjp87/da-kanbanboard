@@ -20,7 +20,7 @@ async function renderBacklog() {
     let backLogs = i.data(); // assign each dataset to an individual backlog. 
     backLogs.id = i.id; // assign each id to the individual backlog.
     allBackLogs.push(backLogs); //push individual backlog into allBackLogs-Array.
-  }); // 
+  });  
   showBacklog();
 }
 
