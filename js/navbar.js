@@ -1,3 +1,7 @@
+/**
+ * This function serves as a logout for users and deletes the (temporary, anonymous) profile if the user is anonymous.
+ */
+
 async function logout() {
     if (firebase.auth().currentUser.isAnonymous) { // if user is anonymous
         let userid = firebase.auth().currentUser.uid;

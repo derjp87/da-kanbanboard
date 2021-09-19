@@ -1,10 +1,16 @@
-function init() {
+/**
+ * This function initializes the site:
+ * 
+ * Checks if a user is signed in
+ * Initializes site if true
+ * Assigns back to Index if not
+ */
 
+function init() {
     firebase.auth().onAuthStateChanged(async function (user) {
         if (user) {
-            // User is signed in.
             includeHTML();
-        } else { // No user is signed in.
+        } else { 
             window.location.assign("index.html");
         }
     });

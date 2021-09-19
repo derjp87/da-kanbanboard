@@ -1,21 +1,27 @@
+/**
+ * This function initializes the site including firebase authentication:
+ */
+
 function init() {
     includeHTML()
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             console.log(user);
-            //User is signed in.
             setTimeout(function(){window.location.assign("board.html")}, 1000);
         } else {
-            // No user is signed in.
-            //The start method will wait until the Dom is loaded.
             ui.start('#firebaseui-auth-container', uiConfig);
         }
     });
 
 }
 
+/**
+ * This function adds a user-specific new document with generated id.
+ * 
+ * @param {object} user - This is the created User-Profile
+ */
+
 function setProfile(user) {
-    // Add a new document with a generated id.
     firebase.firestore().collection("users").doc(user.uid).set({
         displayName: user.displayName,
         email: user.email,
@@ -25,6 +31,7 @@ function setProfile(user) {
         isAnonymous: user.isAnonymous
     });
 }
+
 
 function includeHTML() {
     var z, i, elmnt, file, xhttp;
