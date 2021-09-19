@@ -1,35 +1,63 @@
-function init() {
+/**
+ * This function initializes the site:
+ * 
+ * Checks if a user is signed in
+ * Initializes site if true
+ * Assigns back to Index if not
+ */
 
+function init() {
     firebase.auth().onAuthStateChanged(async function (user) {
-        if (user) {  // User is signed in.
+        if (user) {  
             includeHTML();
             loadTasks();
-        } else {  // No user is signed in.
+        } else {  
             window.location.assign("index.html");
         }
     });
 }
 
+
+
 let allTasks = [];
+
+/**
+ * This function loads Tasks:
+ * 
+ * Loads tasks data from firestore server.
+ * Logs dataset and id forEach stored task into console.
+ * Assigns each dataset to an individual task.
+ * Assigns each id to the individual task.
+ * Pushes individual task into allTasks-Array.
+ * Initializes function continuing to display loaded Tasks. 
+ */
 
 async function loadTasks() {
     allTasks = [];
     let tasks = firebase.firestore().collection('tasks');
-    let response = await tasks.get(); //load tasks data from firestore server.
+    let response = await tasks.get(); 
     response.forEach((i) => {
-        console.log(i.data(), i.id);  // log dataset and id forEach stored task into console.
-        let task = i.data();  // assign each dataset to an individual task. 
-        task.id = i.id;  // assign each id to the individual task.
-        allTasks.push(task); //push individual task into allTasks-Array.
+        console.log(i.data(), i.id);  
+        let task = i.data();   
+        task.id = i.id;  
+        allTasks.push(task); 
 
     });
     loadAllTasks();
 }
 
+/**
+ * This function initializes functions to update; clear and display current Tasks.
+ */
+
 function loadAllTasks() {
     clearTaskStatus();
     loadTaskStatus();
 }
+
+/**
+ * This function clears the board display.
+ */
 
 function clearTaskStatus() {
     document.getElementById('boardToDo').innerHTML = '';
@@ -38,6 +66,10 @@ function clearTaskStatus() {
     document.getElementById('boardDone').innerHTML = '';
 }
 
+/**
+ * This function initializes functions to display Tasks into specific sections.
+ */
+
 function loadTaskStatus() {
     loadTasksToDo();
     loadTasksInProgress();
@@ -45,49 +77,88 @@ function loadTaskStatus() {
     loadTasksDone();
 }
 
+/**
+ * This function displays all specific tasks into "To Do"-Section:
+ * 
+ * Checks if an individual tasksStatus from allTasks equals 'todo'. 
+ * If true continues to display individual task from allTasks as structured below into 'boardToDo'-section. 
+ */
+
 function loadTasksToDo() {
     for (let i = 0; i < allTasks.length; i++) {
         let tasksStatus = allTasks[i]['status'];
 
-        if (tasksStatus == 'todo') { //check if an individual tasksStatus from allTasks equals 'todo'. If true continue to display individual task from allTasks as structured below into 'boardToDo'-section. 
+        if (tasksStatus == 'todo') { 
             document.getElementById('boardToDo').innerHTML += `
             <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})"><div>${allTasks[i]['title']}</div></div>`;
         }
     }
 }
 
+/**
+ * This function displays all specific tasks into "In Progress"-Section:
+ * 
+ * Checks if an individual tasksStatus from allTasks equals 'inprogress'. 
+ * If true continues to display individual task from allTasks as structured below into 'boardInProgress'-section. 
+ */
+
 function loadTasksInProgress() {
     for (let i = 0; i < allTasks.length; i++) {
         let tasksStatus = allTasks[i]['status'];
 
-        if (tasksStatus == 'inprogress') { //check if an individual tasksStatus from allTasks equals 'inprogress'. If true continue to display individual task from allTasks as structured below into 'boardInProgress'-section.
+        if (tasksStatus == 'inprogress') { 
             document.getElementById('boardInProgress').innerHTML += `
             <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})"><div>${allTasks[i]['title']}</div></div>`;
         }
     }
 }
 
+/**
+ * This function displays all specific tasks into "Testing"-Section:
+ * 
+ * Checks if an individual tasksStatus from allTasks equals 'testing'. 
+ * If true continues to display individual task from allTasks as structured below into 'boardTesting'-section. 
+ */
+
 function loadTasksTesting() {
     for (let i = 0; i < allTasks.length; i++) {
         let tasksStatus = allTasks[i]['status'];
 
-        if (tasksStatus == 'testing') { //check if an individual tasksStatus from allTasks equals 'testing'. If true continue to display individual task from allTasks as structured below into 'boardTesting'-section.
+        if (tasksStatus == 'testing') { 
             document.getElementById('boardTesting').innerHTML += `
             <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})"><div>${allTasks[i]['title']}</div></div>`;
         }
     }
 }
 
+/**
+ * This function displays all specific tasks into "Done"-Section:
+ * 
+ * Checks if an individual tasksStatus from allTasks equals 'done'. 
+ * If true continues to display individual task from allTasks as structured below into 'boardDone'-section. 
+ */
+
 function loadTasksDone() {
     for (let i = 0; i < allTasks.length; i++) {
         let tasksStatus = allTasks[i]['status'];
 
-        if (tasksStatus == 'done') { //check if an individual tasksStatus from allTasks equals 'done'. If true continue to display individual task from allTasks as structured below into 'boardDone'-section.
+        if (tasksStatus == 'done') { 
             document.getElementById('boardDone').innerHTML += `
             <div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})"><div>${allTasks[i]['title']}</div></div>`;
         }
     }
 }
+
+/**
+ * This function deletes a selected Task:
+ * 
+ * Searches for index of Task with specific Id in AllTasks-array.
+ * Deletes Task from Array with specific Index.
+ * Initializes function to update; clear and display current Tasks.
+ * Deletes Task from firestore-collection with specific Id.
+ * 
+ * @param {string} id - This is the id of the selected task.
+ */
 
 function deleteTask(id) {
     let index = allTasks.findIndex(t => t.id == id); 
@@ -97,9 +168,21 @@ function deleteTask(id) {
 
 }
 
+/**
+ * This function initializes the dragging of an element.
+ * 
+ * Sets id of specific element equal to currentDraggedElement.
+ * 
+ * @param {string} id - This is the id of the dragged element.
+ */
+
 function startDragging(id) {
     currentDraggedElement = id;
 }
+
+/**
+ * This function allows drop of dragged Element without otherwise initialized onclick-function. 
+ */
 
 function allowDrop(event) {
     event.preventDefault();
@@ -111,6 +194,12 @@ function moveTo(status) {
     loadAllTasks();
     firebase.firestore().collection('tasks').doc(currentDraggedElement).set(taskToMove);
 }
+
+/**
+ * This function initializes functions in order to displays the details of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task. 
+ */
 
 function showDetails(i) {
     document.getElementById('tasksDetails').classList.remove('d-none');
@@ -124,6 +213,12 @@ function showDetails(i) {
     showDetailsDelete(i)
 }
 
+/**
+ * This function displays the title and chosen color of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
+
 function showDetailsTitle(i) {
     document.getElementById('tasksDetails').innerHTML += `
         <div class="details-box" id="details-box" style="background-color: ${allTasks[i]['taskcolor']}";>
@@ -131,6 +226,12 @@ function showDetailsTitle(i) {
         </div>
     `
 }
+
+/**
+ * This function displays the assigned users of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
 
 function showDetailsAssignedUsers(i) {
     document.getElementById('details-box').innerHTML += `
@@ -141,6 +242,12 @@ function showDetailsAssignedUsers(i) {
     `;
 }
 
+/**
+ * This function displays the due date of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
+
 function showDetailsDueDate(i) {
     document.getElementById('details-box').innerHTML += `
         <div class="details-box-line">
@@ -149,6 +256,12 @@ function showDetailsDueDate(i) {
         </div>
     `; 
 }
+
+/**
+ * This function displays the category of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
 
 function showDetailsCategory(i) {
     document.getElementById('details-box').innerHTML += `
@@ -159,6 +272,12 @@ function showDetailsCategory(i) {
     `; 
 }
 
+/**
+ * This function displays the urgency of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
+
 function showDetailsUrgency(i) {
     document.getElementById('details-box').innerHTML += `
         <div class="details-box-line">
@@ -167,6 +286,12 @@ function showDetailsUrgency(i) {
         </div>
 `; 
 }
+
+/**
+ * This function displays the description of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
 
 function showDetailsDescription(i) {
     document.getElementById('details-box').innerHTML += `
@@ -177,11 +302,21 @@ function showDetailsDescription(i) {
     `; 
 }
 
+/**
+ * This function renders the option to delete a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
+
 function showDetailsDelete(i) {
     document.getElementById('details-box').innerHTML += `
         <div class="detail-box-delete">delete<img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>
     `; 
 }
+
+/**
+ * This function clears and hides the detail window of specific tasks.
+ */
 
 function closeDetails() {
     document.getElementById('tasksDetails').innerHTML = '';

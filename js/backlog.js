@@ -1,4 +1,6 @@
 /**
+ * This function initializes the site:
+ * 
  * Checks if a user is signed in
  * Initializes site if true
  * Assigns back to Index if not
@@ -18,7 +20,8 @@ function init() {
 let allBackLogs = [];
 
 /**
- * Renders Backlog:
+ * This function renders the Backlog:
+ * 
  * Loads tasks data from firestore server.
  * Logs dataset and id forEach stored task into console.
  * Assigns each dataset to an individual backlog.
@@ -41,7 +44,8 @@ async function renderBacklog() {
 }
 
 /**
- * Displays Backlog (allBackLogs-Array):
+ * This function displays the Backlog (from allBackLogs-Array):
+ * 
  * If at least one backlog has been created, continue to load (and display) each.
  * If not displays : "no-entries".
  */
@@ -58,7 +62,9 @@ function showBacklog() {
 }
 
 /**
- * Displays a list of each individual backlog. Each individual backlog-dataset-object is taken from allBackLogs-array.
+ * This function displays a list with each individual backlog. Each individual backlog-object is taken from allBackLogs-array.
+ * 
+ * @param {index} i - This is the index of a specific backlog-object.
  */
 
 function loadBacklogs(i) {
@@ -78,7 +84,7 @@ function loadBacklogs(i) {
 }
 
 /**
- * Assigns user via individual backlog-onclick to board.html.
+ * This function assigns user via individual backlog-onclick to board.html.
  */
 
 function openBoard() {

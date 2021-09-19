@@ -1,4 +1,6 @@
 /**
+ * This function initializes the site:
+ * 
  * Checks if a user is signed in
  * Initializes site if true
  * Assigns back to Index if not
@@ -19,7 +21,8 @@ let userList = [];
 let assignedUsers = [];
 
 /**
- * Displays selectable UserList:
+ * This function displays the selectable UserList:
+ * 
  * Loads user data from firestore server
  * Pushes user data into userList array + log data into console.
  * Displays selectable userlist at addTask - except for anonymous user "null".
@@ -41,10 +44,14 @@ async function showUserList() {
     } 
 }
 
+
 /**
- * Adds and displays selected User to Assigned Users:
+ * This function adds and displays selected User to Assigned Users:
+ * 
  * If selected user from displayed userList is not included as assignedUsers, push data into assignedUsers array.
  * Displays assigned users from assignedUsers array.
+ * 
+ * @param {index} i - This is the index of the specific user.
  */
 
 function addTaskAddUser(i) {
@@ -59,9 +66,12 @@ function addTaskAddUser(i) {
     }
 }
 
+
 /**
- * Removes selected assigned-User from assignedUsers-array.
- * Clears and displays updated assigned users-list.
+ * This function removes a selected assigned-User from assignedUsers-array.
+ * Then clears and displays updated assigned users-list.
+ * 
+ * @param {index} i - This is the index of the specific user.
  */
 
 function addTaskRemoveUser(i) {
@@ -74,7 +84,7 @@ function addTaskRemoveUser(i) {
 }
 
 /**
- * Checks if at least one User has been assigned to Task in order to submit.
+ * This function checks if at least one User has been assigned to Task in order to submit.
  */
 
 function addTaskCreateCheck() {
@@ -84,7 +94,8 @@ function addTaskCreateCheck() {
 }
 
 /**
- * Submits input Task:
+ * This function submits the input Task:
+ * 
  * Pushes input data.value of addTask-inputfields into collection 'tasks' at firestore server.
  * Assigns user after submit to board.html.
  */
@@ -107,7 +118,7 @@ function addTaskCreate() {
 }
 
 /**
- * Changes shown addTaskColor-field to selected option-color.
+ * This function changes the background-color of the shown addTaskColor-field to the selected option-color.
  */
 
 function changeColorOfMenu() {
