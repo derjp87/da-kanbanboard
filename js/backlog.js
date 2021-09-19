@@ -1,9 +1,15 @@
+/**
+ * Checks if a user is signed in
+ * Initializes site if true
+ * Assigns back to Index if not
+ */
+
 function init() {
   firebase.auth().onAuthStateChanged(async function (user) {
-    if (user) { // User is signed in.
+    if (user) { 
       includeHTML();
       renderBacklog();
-    } else { // No user is signed in.
+    } else { 
       window.location.assign("index.html");
     }
   });
@@ -11,29 +17,49 @@ function init() {
 
 let allBackLogs = [];
 
+/**
+ * Renders Backlog:
+ * Loads tasks data from firestore server.
+ * Logs dataset and id forEach stored task into console.
+ * Assigns each dataset to an individual backlog.
+ * Assigns each id to the individual backlog.
+ * Pushes individual backlog into allBackLogs-Array.
+ * Initializes function to display allBackLogs-Array.
+ */
+
 async function renderBacklog() {
   allBackLogs = [];
   let backLogs = firebase.firestore().collection('tasks');
-  let response = await backLogs.get(); //load tasks data from firestore server.
+  let response = await backLogs.get(); 
   response.forEach((i) => {
-    console.log(i.data(), i.id); // log dataset and id forEach stored task into console.
-    let backLogs = i.data(); // assign each dataset to an individual backlog. 
-    backLogs.id = i.id; // assign each id to the individual backlog.
-    allBackLogs.push(backLogs); //push individual backlog into allBackLogs-Array.
+    console.log(i.data(), i.id); 
+    let backLogs = i.data();  
+    backLogs.id = i.id; 
+    allBackLogs.push(backLogs); 
   });  
   showBacklog();
 }
+
+/**
+ * Displays Backlog (allBackLogs-Array):
+ * If at least one backlog has been created, continue to load (and display) each.
+ * If not displays : "no-entries".
+ */
 
 function showBacklog() {
   if (allBackLogs.length > 0) {
     document.getElementById('mainContent').innerHTML = ``;
     for (let i = 0; i < allBackLogs.length; i++) {
-      loadBacklogs(i); // if at least one backlog has been created, continue to load (and display) each.
+      loadBacklogs(i); 
     }
   } else {
     backlogContainer.innerHTML = `<div class="todo-container no-entries">"Keine Einträge vorhanden..."</div>`;
-  } //otherwise display "no-entries".
+  } 
 }
+
+/**
+ * Displays a list of each individual backlog. Each individual backlog-dataset-object is taken from allBackLogs-array.
+ */
 
 function loadBacklogs(i) {
   document.getElementById('mainContent').innerHTML += `
@@ -48,9 +74,13 @@ function loadBacklogs(i) {
     <div id="backlog-category" class="category">${allBackLogs[i]['category']}</div>
     <div id="backlog-details" class="details">${allBackLogs[i]['title']}</div>
   </div>
-  `; //display a list of each individual backlog as structured above. Each individual backlog-dataset-object is taken from allBackLogs-array. 
+  `;  
 }
 
+/**
+ * Assigns user via individual backlog-onclick to board.html.
+ */
+
 function openBoard() {
-  window.location.href = 'board.html'; // assign user via individual backlog-onclick to board.html.
+  window.location.href = 'board.html'; 
 }
