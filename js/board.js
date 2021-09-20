@@ -183,7 +183,7 @@ function startDragging(id) {
 /**
  * This function allows drop of dragged Element without otherwise initialized onclick-function.
  * 
- * @param {ondragover} event - this is the element you want to drag and drop
+ * @param {string} event - this is the element you want to drag and drop.
  */
 
 function allowDrop(event) {
