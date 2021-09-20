@@ -100,6 +100,13 @@
     margin-top: 15px;
 }
 
+.detail-box-delete-sub {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+}
+
 @media(max-width:1153px) {
     .details-box {
         width: 350px;
@@ -123,14 +130,12 @@
         width: 100%;
         border: none;
     }
-    
     .board-category-head {
         background-color: #2b7cbbf2;
         color: white;
         border: 1px solid #236497;
     }
 }
-
 
 @media(max-width:300px) {
     .footer {

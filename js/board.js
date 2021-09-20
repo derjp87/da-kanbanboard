@@ -318,7 +318,7 @@ function showDetailsDescription(i) {
 
 function showDetailsDelete(i) {
     document.getElementById('details-box').innerHTML += `
-        <div class="detail-box-delete">delete<img onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})' class="board-delete-task-icon" src="img/delete.png"></div>
+        <div class="detail-box-delete"><div class="detail-box-delete-sub" onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})'>delete<img  class="board-delete-task-icon" src="img/delete.png"></div></div>
     `; 
 }
 
