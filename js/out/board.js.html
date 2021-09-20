@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: board.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: board.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * This function initializes the site:
+ * 
+ * Checks if a user is signed in
+ * Initializes site if true
+ * Assigns back to Index if not
+ */
+
+function init() {
+    firebase.auth().onAuthStateChanged(async function (user) {
+        if (user) {  
+            includeHTML();
+            loadTasks();
+        } else {  
+            window.location.assign("index.html");
+        }
+    });
+}
+
+
+
+let allTasks = [];
+
+/**
+ * This function loads Tasks:
+ * 
+ * Loads tasks data from firestore server.
+ * Logs dataset and id forEach stored task into console.
+ * Assigns each dataset to an individual task.
+ * Assigns each id to the individual task.
+ * Pushes individual task into allTasks-Array.
+ * Initializes function continuing to display loaded Tasks. 
+ */
+
+async function loadTasks() {
+    allTasks = [];
+    let tasks = firebase.firestore().collection('tasks');
+    let response = await tasks.get(); 
+    response.forEach((i) => {
+        console.log(i.data(), i.id);  
+        let task = i.data();   
+        task.id = i.id;  
+        allTasks.push(task); 
+
+    });
+    loadAllTasks();
+}
+
+/**
+ * This function initializes functions to update; clear and display current Tasks.
+ */
+
+function loadAllTasks() {
+    clearTaskStatus();
+    loadTaskStatus();
+}
+
+/**
+ * This function clears the board display.
+ */
+
+function clearTaskStatus() {
+    document.getElementById('boardToDo').innerHTML = '';
+    document.getElementById('boardInProgress').innerHTML = '';
+    document.getElementById('boardTesting').innerHTML = '';
+    document.getElementById('boardDone').innerHTML = '';
+}
+
+/**
+ * This function initializes functions to display Tasks into specific sections.
+ */
+
+function loadTaskStatus() {
+    loadTasksToDo();
+    loadTasksInProgress();
+    loadTasksTesting();
+    loadTasksDone();
+}
+
+/**
+ * This function displays all specific tasks into "To Do"-Section:
+ * 
+ * Checks if an individual tasksStatus from allTasks equals 'todo'. 
+ * If true continues to display individual task from allTasks as structured below into 'boardToDo'-section. 
+ */
+
+function loadTasksToDo() {
+    for (let i = 0; i &lt; allTasks.length; i++) {
+        let tasksStatus = allTasks[i]['status'];
+
+        if (tasksStatus == 'todo') { 
+            document.getElementById('boardToDo').innerHTML += `
+            &lt;div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})">&lt;div>${allTasks[i]['title']}&lt;/div>&lt;/div>`;
+        }
+    }
+}
+
+/**
+ * This function displays all specific tasks into "In Progress"-Section:
+ * 
+ * Checks if an individual tasksStatus from allTasks equals 'inprogress'. 
+ * If true continues to display individual task from allTasks as structured below into 'boardInProgress'-section. 
+ */
+
+function loadTasksInProgress() {
+    for (let i = 0; i &lt; allTasks.length; i++) {
+        let tasksStatus = allTasks[i]['status'];
+
+        if (tasksStatus == 'inprogress') { 
+            document.getElementById('boardInProgress').innerHTML += `
+            &lt;div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})">&lt;div>${allTasks[i]['title']}&lt;/div>&lt;/div>`;
+        }
+    }
+}
+
+/**
+ * This function displays all specific tasks into "Testing"-Section:
+ * 
+ * Checks if an individual tasksStatus from allTasks equals 'testing'. 
+ * If true continues to display individual task from allTasks as structured below into 'boardTesting'-section. 
+ */
+
+function loadTasksTesting() {
+    for (let i = 0; i &lt; allTasks.length; i++) {
+        let tasksStatus = allTasks[i]['status'];
+
+        if (tasksStatus == 'testing') { 
+            document.getElementById('boardTesting').innerHTML += `
+            &lt;div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})">&lt;div>${allTasks[i]['title']}&lt;/div>&lt;/div>`;
+        }
+    }
+}
+
+/**
+ * This function displays all specific tasks into "Done"-Section:
+ * 
+ * Checks if an individual tasksStatus from allTasks equals 'done'. 
+ * If true continues to display individual task from allTasks as structured below into 'boardDone'-section. 
+ */
+
+function loadTasksDone() {
+    for (let i = 0; i &lt; allTasks.length; i++) {
+        let tasksStatus = allTasks[i]['status'];
+
+        if (tasksStatus == 'done') { 
+            document.getElementById('boardDone').innerHTML += `
+            &lt;div draggable="true" ondragstart='startDragging(${JSON.stringify(allTasks[i]['id'])})' class="board-task" style="background-color: ${allTasks[i]['taskcolor']};" onclick="showDetails(${i})">&lt;div>${allTasks[i]['title']}&lt;/div>&lt;/div>`;
+        }
+    }
+}
+
+/**
+ * This function deletes a selected Task:
+ * 
+ * Searches for index of Task with specific Id in AllTasks-array.
+ * Deletes Task from Array with specific Index.
+ * Initializes function to update; clear and display current Tasks.
+ * Deletes Task from firestore-collection with specific Id.
+ * 
+ * @param {string} id - This is the id of the selected task.
+ */
+
+function deleteTask(id) {
+    let index = allTasks.findIndex(t => t.id == id); 
+    allTasks.splice(index, 1);
+    loadAllTasks();
+    firebase.firestore().collection('tasks').doc(id).delete();
+
+}
+
+/**
+ * This function initializes the dragging of an element.
+ * 
+ * Sets id of specific element equal to currentDraggedElement.
+ * 
+ * @param {string} id - This is the id of the dragged element.
+ */
+
+function startDragging(id) {
+    currentDraggedElement = id;
+}
+
+/**
+ * This function allows drop of dragged Element without otherwise initialized onclick-function.
+ * 
+ * @param {string} event - this is the element you want to drag and drop.
+ */
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+/**
+ * This function sets a moved(dragged) Task to the specific status.
+ * 
+ * @param {string} status - this is the value you want to update the status of the task to.
+ */
+
+function moveTo(status) {
+    let taskToMove = allTasks.find(task => task.id == currentDraggedElement);
+    taskToMove.status = status;
+    loadAllTasks();
+    firebase.firestore().collection('tasks').doc(currentDraggedElement).set(taskToMove);
+}
+
+/**
+ * This function initializes functions in order to displays the details of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task. 
+ */
+
+function showDetails(i) {
+    document.getElementById('tasksDetails').classList.remove('d-none');
+
+    showDetailsTitle(i);
+    showDetailsAssignedUsers(i);
+    showDetailsDueDate(i);
+    showDetailsCategory(i);
+    showDetailsUrgency(i);
+    showDetailsDescription(i);
+    showDetailsDelete(i)
+}
+
+/**
+ * This function displays the title and chosen color of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
+
+function showDetailsTitle(i) {
+    document.getElementById('tasksDetails').innerHTML += `
+        &lt;div class="details-box" id="details-box" style="background-color: ${allTasks[i]['taskcolor']}";>
+        &lt;div class="details-box-titel">${allTasks[i]['title']}&lt;/div>
+        &lt;/div>
+    `
+}
+
+/**
+ * This function displays the assigned users of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
+
+function showDetailsAssignedUsers(i) {
+    document.getElementById('details-box').innerHTML += `
+        &lt;div class="details-box-line">
+            &lt;div class="details-box-headline">Users:&lt;/div>
+            &lt;div class="details-box-content details-box-content-overflow">${allTasks[i]['assignedusers'].join(", ")}&lt;/div>
+        &lt;/div>
+    `;
+}
+
+/**
+ * This function displays the due date of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
+
+function showDetailsDueDate(i) {
+    document.getElementById('details-box').innerHTML += `
+        &lt;div class="details-box-line">
+            &lt;div class="details-box-headline">Due Date:&lt;/div>
+            &lt;div class="details-box-content">${allTasks[i]['duedate']}&lt;/div>
+        &lt;/div>
+    `; 
+}
+
+/**
+ * This function displays the category of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
+
+function showDetailsCategory(i) {
+    document.getElementById('details-box').innerHTML += `
+        &lt;div class="details-box-line">
+            &lt;div class="details-box-headline">Category:&lt;/div>
+            &lt;div class="details-box-content">${allTasks[i]['category']}&lt;/div>
+        &lt;/div>
+    `; 
+}
+
+/**
+ * This function displays the urgency of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
+
+function showDetailsUrgency(i) {
+    document.getElementById('details-box').innerHTML += `
+        &lt;div class="details-box-line">
+            &lt;div class="details-box-headline">Urgency:&lt;/div>
+            &lt;div class="details-box-content">${allTasks[i]['urgency']}&lt;/div>                    
+        &lt;/div>
+`; 
+}
+
+/**
+ * This function displays the description of a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
+
+function showDetailsDescription(i) {
+    document.getElementById('details-box').innerHTML += `
+        &lt;div>
+            &lt;div class="details-box-headline">Description:&lt;/div>
+            &lt;div class="details-box-content details-box-content-overflow">${allTasks[i]['description']}&lt;/div>
+        &lt;/div>
+    `; 
+}
+
+/**
+ * This function renders the option to delete a specific task.
+ * 
+ * @param {index} i - This is the index of the specific task.
+ */
+
+function showDetailsDelete(i) {
+    document.getElementById('details-box').innerHTML += `
+        &lt;div class="detail-box-delete">&lt;div class="detail-box-delete-sub" onclick='deleteTask(${JSON.stringify(allTasks[i]['id'])})'>delete&lt;img  class="board-delete-task-icon" src="img/delete.png">&lt;/div>&lt;/div>
+    `; 
+}
+
+/**
+ * This function clears and hides the detail window of specific tasks.
+ */
+
+function closeDetails() {
+    document.getElementById('tasksDetails').innerHTML = '';
+    document.getElementById('tasksDetails').classList.add('d-none');
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addTaskAddUser">addTaskAddUser</a></li><li><a href="global.html#addTaskCreate">addTaskCreate</a></li><li><a href="global.html#addTaskCreateCheck">addTaskCreateCheck</a></li><li><a href="global.html#addTaskRemoveUser">addTaskRemoveUser</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#changeColorOfMenu">changeColorOfMenu</a></li><li><a href="global.html#clearTaskStatus">clearTaskStatus</a></li><li><a href="global.html#closeDetails">closeDetails</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#loadAllTasks">loadAllTasks</a></li><li><a href="global.html#loadBacklogs">loadBacklogs</a></li><li><a href="global.html#loadTasks">loadTasks</a></li><li><a href="global.html#loadTasksDone">loadTasksDone</a></li><li><a href="global.html#loadTasksInProgress">loadTasksInProgress</a></li><li><a href="global.html#loadTaskStatus">loadTaskStatus</a></li><li><a href="global.html#loadTasksTesting">loadTasksTesting</a></li><li><a href="global.html#loadTasksToDo">loadTasksToDo</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#openBoard">openBoard</a></li><li><a href="global.html#renderBacklog">renderBacklog</a></li><li><a href="global.html#setProfile">setProfile</a></li><li><a href="global.html#showBacklog">showBacklog</a></li><li><a href="global.html#showDetails">showDetails</a></li><li><a href="global.html#showDetailsAssignedUsers">showDetailsAssignedUsers</a></li><li><a href="global.html#showDetailsCategory">showDetailsCategory</a></li><li><a href="global.html#showDetailsDelete">showDetailsDelete</a></li><li><a href="global.html#showDetailsDescription">showDetailsDescription</a></li><li><a href="global.html#showDetailsDueDate">showDetailsDueDate</a></li><li><a href="global.html#showDetailsTitle">showDetailsTitle</a></li><li><a href="global.html#showDetailsUrgency">showDetailsUrgency</a></li><li><a href="global.html#showUserList">showUserList</a></li><li><a href="global.html#startDragging">startDragging</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Sep 20 2021 12:14:16 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
