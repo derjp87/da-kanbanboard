@@ -181,12 +181,20 @@ function startDragging(id) {
 }
 
 /**
- * This function allows drop of dragged Element without otherwise initialized onclick-function. 
+ * This function allows drop of dragged Element without otherwise initialized onclick-function.
+ * 
+ * @param {ondragover} event - this is the element you want to drag and drop
  */
 
 function allowDrop(event) {
     event.preventDefault();
 }
+
+/**
+ * This function sets a moved(dragged) Task to the specific status.
+ * 
+ * @param {*} status 
+ */
 
 function moveTo(status) {
     let taskToMove = allTasks.find(task => task.id == currentDraggedElement);
