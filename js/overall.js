@@ -1,3 +1,7 @@
+/**
+ * This function serves to include Templates to a site.
+ */
+
 function includeHTML() {
     var z, i, elmnt, file, xhttp;
     /* Loop through a collection of all HTML elements: */

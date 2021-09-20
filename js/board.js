@@ -193,7 +193,7 @@ function allowDrop(event) {
 /**
  * This function sets a moved(dragged) Task to the specific status.
  * 
- * @param {*} status 
+ * @param {string} status - this is the value you want to update the status of the task to.
  */
 
 function moveTo(status) {
